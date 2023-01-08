@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Portal - Create New Entry</title>
+    <script type="module" src="/internal/firebase/database/request.js"></script>
+    <style>
+        .inputsContainer{
+            margin-bottom: 1%;
+        }
+        input{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .container{
+            display: flex;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .buttonsContainer{
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>  
+    <div class="container">
+        <input type="text" id="artworkName" placeholder="Artwork Name">
+        <input type="text" id="artworkDescription" placeholder="Artwork Description">
+        <input type="date" id="artworkCompletionDate" placeholder="Artwork Completion Date">
+        <input type="text" id="materialsUsed" placeholder="Materials Used">
+        <input type="url" id="artworkPictureURL" placeholder="Artwork Picture URL">
+    </div>
+
+
+    <!-- <div class="buttonsContainer" style="display: flex;"> -->
+        <input type="submit" id="submitArtwork">
+        <button type="submit" id="deleteArtwork">Delete all artwork from database.</button>
+    </div>
+    
+    <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
+</body>
+</html>

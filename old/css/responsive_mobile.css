@@ -1,0 +1,12 @@
+@media screen and (max-width: 860px) {
+
+#content-desktop {display: none;}
+#content-mobile {display: block;}
+
+}
+@media screen and (min-width: 860px) {
+
+    #content-desktop {display: block;}
+    #content-mobile {display: none;}
+    
+    }
