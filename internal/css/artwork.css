@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+* {
+    box-sizing: border-box;
+    
+   }
+   body {
+   font-size: 14px;
+   }
+   .artworks{
+    display:inline-flex;
+    justify-content: space-around;
+   }
+   .artworkContainer {
+    width: 500px;
+    height: 550px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+   }
+   .artworkImage {
+   width: 350px;
+   height: 450px;
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   opacity: 1;
+   position: absolute;
+   top: 0px;
+   left: 24px;
+   border: 1px solid rgba(0,0,0,1);
+   border-top-left-radius: 13px;
+   border-top-right-radius: 13px;
+   border-bottom-left-radius: 13px;
+   border-bottom-right-radius: 13px;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   overflow: hidden;
+   }
+   .artworkPriceCompletionContainer {
+   width: 254px;
+   height: 19px;
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   opacity: 1;
+   position: absolute;
+   top: 450px;
+   left: 85px;
+   overflow: hidden;
+   }
+   .artworkPrice {
+   width: 68px;
+   color: rgba(0,0,0,1);
+   position: relative;
+   top: 0px;
+   left: 0px;
+   font-family: Roboto Mono;
+   font-weight: Light;
+   font-size: 14px;
+   opacity: 1;
+   text-align: left;
+   }
+   .informationSeperator {
+   width: 8px;
+   height: 8px;
+   background: rgba(110,110,110,1);
+   opacity: 1;
+   position: absolute;
+   top: 6px;
+   left: 106px;
+   border-radius: 50%;
+   }
+   .compleationDate {
+   width: 92px;
+   color: rgba(0,0,0,1);
+   position: absolute;
+   top: 0px;
+   left: 162px;
+   font-family: Roboto Mono;
+   font-weight: Light;
+   font-size: 14px;
+   opacity: 1;
+   text-align: left;
+   }
+   .artworkCategoryContainer {
+   width: 64px;
+   height: 18px;
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   opacity: 1;
+   position: absolute;
+   top: 431px;
+   left: 164px;
+   overflow: hidden;
+   }
+   .categoryBox {
+   width: 64px;
+   height: 18px;
+   background: rgba(136,74,74,1);
+   opacity: 1;
+   position: relative;
+   top: 0px;
+   left: 0px;
+   border-top-left-radius: 171px;
+   border-top-right-radius: 171px;
+   border-bottom-left-radius: 171px;
+   border-bottom-right-radius: 171px;
+   overflow: hidden;
+   }
+   .categoryLabel {
+   width: 55px;
+   color: rgba(255,255,255,1);
+   position: absolute;
+   top: 1px;
+   left: 4px;
+   font-family: Roboto Mono;
+   font-weight: Medium;
+   font-size: 11px;
+   opacity: 1;
+   text-align: center;
+   }
+   .artworkInformationContainer {
+   width: 392px;
+   height: 44px;
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   opacity: 1;
+   position: absolute;
+   top: 355px;
+   left: 0px;
+   overflow: hidden;
+   }
+   .artworkDescription {
+   width: 392px;
+   color: rgba(0,0,0,1);
+   position: absolute;
+   top: 22px;
+   left: 0px;
+   font-family: Roboto Mono;
+   font-weight: Regular;
+   font-size: 15px;
+   opacity: 1;
+   text-align: center;
+   }
+   .artworkName {
+   width: 310px;
+   color: rgba(0,0,
+   0,1);
+   position: absolute;
+   top: 0px;
+   left: 45px;
+   font-family: Roboto Mono;
+   font-weight: Bold;
+   font-size: 20px;
+   opacity: 1;
+   text-align: center;
+   }

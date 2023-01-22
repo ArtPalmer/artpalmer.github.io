@@ -3,27 +3,9 @@
 <head>
     <title>Portal - Create New Entry</title>
     <script type="module" src="/internal/firebase/database/request.js"></script>
-    <style>
-        .inputsContainer{
-            margin-bottom: 1%;
-        }
-        input{
-            display: flex;
-            justify-content: space-evenly;
-        }
-        .container{
-            display: flex;
-        }
-        body{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .buttonsContainer{
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+    <script type="module" src="/internal/firebase/storage/upload.js"></script>
+    <link rel="stylesheet" href="/internal/css/style.css">
+
 </head>
 <body>  
     <div class="container">
@@ -31,15 +13,15 @@
         <input type="text" id="artworkDescription" placeholder="Artwork Description">
         <input type="date" id="artworkCompletionDate" placeholder="Artwork Completion Date">
         <input type="text" id="materialsUsed" placeholder="Materials Used">
-        <input type="url" id="artworkPictureURL" placeholder="Artwork Picture URL">
-    </div>
+        <input type="number" id="artworkPrice" placeholder="Artwork Price">
+        <input type="file" id="artworkimageFile" name="filename">
+        </div>
 
 
-    <!-- <div class="buttonsContainer" style="display: flex;"> -->
         <input type="submit" id="submitArtwork">
         <button type="submit" id="deleteArtwork">Delete all artwork from database.</button>
     </div>
-    
+    <span id="loader" class="loader" style="visibility: hidden; margin-left: 50%;margin-right: 50%;"></span>
     <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
 </body>
 </html>

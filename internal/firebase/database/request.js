@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
+import { uploadToCloud } from "../storage/upload.js";
+import { deleteFile } from "../storage/delete.js";
 // Initialize Firebase
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
@@ -21,35 +22,40 @@ submitArtwork.addEventListener('click', e => {
   
   get(child(dbRef, `gallery/map/totalArtworks`)).then((snapshot) => {
     if (snapshot.exists()) {
-
+    
       totalArtworksDB = snapshot.val()
       
+      console.log(totalArtworksDB)
+
       var artworkName = document.getElementById("artworkName").value;
       var artworkDescription = document.getElementById("artworkDescription").value;
       var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
       var materialsUsed = document.getElementById("materialsUsed").value;
-      var artworkPictureURL = document.getElementById("artworkPictureURL").value;
+      var artworkPrice = document.getElementById("artworkPrice").value;
+      var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + (totalArtworksDB + 1) + ".jpg?alt=media"
       set(ref(db, 'gallery/artwork'+ (totalArtworksDB + 1)), {
         "artworkName": artworkName,
         "artworkDescription": artworkDescription,
         "artworkCompletionDate": artworkCompletionDate,
         "materialsUsed": materialsUsed,
+        "artworkPrice": artworkPrice,
         "artworkPictureURL": artworkPictureURL
       });
+      
       console.log(artworkName, artworkDescription, artworkCompletionDate, materialsUsed)
     
+
       set(ref(db, 'gallery/map'), {
         "totalArtworks": (totalArtworksDB + 1)
       });
       console.log("Update galler/ymap")
-
+      uploadToCloud(totalArtworksDB + 1)
     } else {
       console.warn("Error GETTING gallery/map/totalArtworks");
     }
   }).catch((error) => {
     console.error(error);
   });
-  
 });
 
 deleteArtwork.addEventListener('click', e => {
@@ -57,15 +63,21 @@ deleteArtwork.addEventListener('click', e => {
     get(child(dbRef, `gallery/map/totalArtworks`)).then((snapshot) => {
       if (snapshot.exists()) {
         var totalArtworks = snapshot.val()
-        console.log(totalArtworks)
-        var i = 0
-        new Array(totalArtworks + 1).fill().map(() => {
-          remove(ref(db, 'gallery/artwork' + (i++)))
-          set(ref(db, 'gallery/map/'), {
-            "totalArtworks": totalArtworks--
-          });
-          console.log('gallery/artwork' + (i))
-          })
+        if (totalArtworks == 0){
+          
+        }
+        else{
+          console.log(totalArtworks)
+          var i = 0
+          new Array(totalArtworks + 1).fill().map(() => {
+            remove(ref(db, 'gallery/artwork' + (i++)))
+            deleteFile(i)
+            set(ref(db, 'gallery/map/'), {
+              "totalArtworks": totalArtworks--
+            });
+            console.log('gallery/artwork' + (i))
+            })
+        }
         }
       })
     }
