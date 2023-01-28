@@ -19,7 +19,7 @@ function getArtworkOneRequest(){
   get(child(dbRef, '/gallery/')).then((snapshot) => {
 
     if (snapshot.exists()){
-      document.getElementById("loader").remove();
+      document.getElementById("loader_container").remove();
       var i = 0
       var artworkData = snapshot.val()
       console.log(artworkData)
