@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@media (min-width: 1000px) {
+	.align{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	p{
+		margin-top: -4;
+	}
+	* {
+	  background: #F6F6F6;
+	  font-family: 'Roboto Mono';
+	}
+	
+	.site-header {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  flex-wrap: wrap;
+	  margin: 10px;
+	  margin-left: 20%;
+	  margin-right: 20%;
+	}
+	.social_media_container{
+	  display: flex;
+	  gap: 15px;
+	  align-items: center;
+	  flex-wrap: wrap;
+	}
+	.social_media_icon{
+		height: 27px;
+		width: 27px;
+	}
+	._32x32{
+		height: 32px;
+		width: auto;
+	}
+	.input_container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.form_input{
+		outline: none;
+		border: none;
+		margin-top: 15px;
+		font-size: 20px;
+		width: 100%;
+		height: 20px;
+	}
+	.form_input_body{
+		display: block;
+		outline: none;
+		border: none;
+		margin-top: 15px;
+		font-size: 20px;
+		width: 100%;
+		height: 90px;
+		resize: none;
+	}
+	header img{
+	  width: 234px;
+	  height: 57px;
+	}
+	header a{
+		text-decoration: none;
+		font-weight: 700;
+	  	font-size: 30px;
+	  	line-height: 40px;
+	  	justify-content: flex-end;
+	  	color: #000000;
+	  	margin-right: 10px;
+	  	margin-left: 10px;
+
+	}
+	.page_active{
+		color: #888888
+	}
+	
+	footer{
+	  display: flex;
+	  justify-content: space-evenly;
+	  /* lock at bottom of page */
+	  position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  margin-bottom: 10px;
+	  text-align: center;
+	
+	}
+	.center_text{
+		text-align: center;
+	}
+	._20px{
+		font-size: 20px;
+	}
+	.highlight{
+		color: rgb(82, 137, 255)
+	}
+  }
+  
