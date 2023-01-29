@@ -40,6 +40,10 @@ submitenquiry.addEventListener('click', e => {
         "totalEnquiries": (totalEnquiriesDB + 1)
       });
       console.log("Update galler/ymap")
+      // create a xhr post request
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://hooks.zapier.com/hooks/catch/14301602/bvlgd9m/');
+      xhr.send()
     } else {
       console.warn("Error GETTING Enquiries/map/totalEnquiries");
     }

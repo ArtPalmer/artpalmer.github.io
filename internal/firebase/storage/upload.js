@@ -18,7 +18,7 @@ const auth = getAuth(app);
 const storage = getStorage(app);
 var file= [];
 export function uploadToCloud(artworkNumber){
-    document.getElementById("loader").style.visibility = "visible";
+    // document.getElementById("loader_container").style.display = "block";
     const artworkStorageRef = ref(storage, ('/artworks/' + artworkNumber + '.jpg'));
 
     console.log('/artworks/' + artworkNumber + '.jpg')
@@ -27,7 +27,7 @@ export function uploadToCloud(artworkNumber){
     file = fileElement.files[0];
     console.log(file)
     uploadBytes(artworkStorageRef, file).then((snapshot) => {
-        document.getElementById("loader").style.visibility = "hidden";
+        // document.getElementById("loader").style.display = "none";
         window.alert("Artwork added to database.")
     });
 }
