@@ -1,30 +1,116 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-@media (max-width: 1000px) { 
+@media (max-width: 1111px) { 
+	.align{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		flex-wrap: wrap;
+		margin-left: 30px;
+		margin-right: 30px;
+	}
+	p{
+		font-size: 50px;
+	}
+	h1{
+		font-size: 70px;
+	}
 	* {
 	  background: #F6F6F6;
 	  font-family: 'Roboto Mono';
 	}
+	
 	.site-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	  }
+	.social_media_container{
 	  display: flex;
-	  justify-content: center;
+	  gap: 15px;
 	  align-items: center;
 	  flex-wrap: wrap;
 	}
+	.social_media_icon{
+		height: 54px;
+		width: 54px;
+	}
+	._32x32{
+		height: 64px;
+		width: auto;
+	}
+	.input_container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.form_input{
+		outline: none;
+		border: none;
+		margin-top: 15px;
+		font-size: 20px;
+		width: 100%;
+		height: 60px;
+	}
+	.form_input_body{
+		display: block;
+		outline: none;
+		border: none;
+		font-size: 30px;
+		margin-top: 15px;
+		font-size: 50px;
+		width: 100%;
+		height: 400px;
+		resize: none;
+	}
+	input[type="text"]
+{
+    font-size:50px;
+}
+	input[type="email" i]
+{
+    font-size:50px;
+}
+
+textarea::placeholder{
+	font-size: 50px;
+}
+textarea{
+	font-size: 50px;
+}
 	header img{
-	  width: 434px;
-	  height: 157px;
+		width: 434px;
+		height: 157px;
 	}
 	header a{
-	  display: none;
+		display: none;
+
 	}
+	.page_active{
+		color: #888888
+	}
+	
 	footer{
-	  /* lock at base of page */
+	  display: flex;
+	  justify-content: space-evenly;
+	  /* lock at bottom of page */
 	  position: fixed;
 	  left: 0;
 	  bottom: 0;
 	  width: 100%;
 	  margin-bottom: 10px;
 	  text-align: center;
-	}
 	
+	}
+	.center_text{
+		text-align: center;
+	}
+	._20px{
+		font-size: 20px;
+	}
+	.highlight{
+		color: rgb(82, 137, 255)
+	}
   }

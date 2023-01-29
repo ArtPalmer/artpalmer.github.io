@@ -22,7 +22,7 @@ submitArtwork.addEventListener('click', e => {
   
   get(child(dbRef, `gallery/map/totalArtworks`)).then((snapshot) => {
     if (snapshot.exists()) {
-    
+      window.alert("Artwork started uploading!")
       totalArtworksDB = snapshot.val()
       
       console.log(totalArtworksDB)
