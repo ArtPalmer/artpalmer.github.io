@@ -1,6 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { createAndSend } from "/internal/enquiry/email_handler.js";
 // Initialize Firebase
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
@@ -23,25 +24,23 @@ function submitEnquiry(enquiryName, enquiryEmail, enquiryPhone, body) {
       
       console.log(totalEnquiriesDB)
 
-  set(ref(db, 'enquiries/hidden/'+ (totalEnquiriesDB + 1)), {
-    "name": enquiryName,
-    "email": enquiryEmail,
-    "phone": enquiryPhone,
-    "body": body
-  });
-  console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
-  set(ref(db, 'enquiries/map'), {
-    "totalEnquiries": (totalEnquiriesDB + 1)
-  });
-    }});
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://hooks.zapier.com/hooks/catch/14301602/bvlgd9m/');
-  xhr.send();
-  window.alert("Thank you for your enquiry, we will be in touch shortly");
+      set(ref(db, 'enquiries/hidden/'+ (totalEnquiriesDB + 1)), {
+        "name": enquiryName,
+        "email": enquiryEmail,
+        "phone": enquiryPhone,
+        "body": body
+      });
+      console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
+      set(ref(db, 'enquiries/map'), {
+        "totalEnquiries": (totalEnquiriesDB + 1)
+      });
+      console.log({"totalEnquiries": (totalEnquiriesDB + 1)})
+      createAndSend(totalEnquiriesDB + 1);
+      }});
+      window.alert("Thank you for your enquiry, we will be in touch shortly");
 };
 
 submitenquiry.addEventListener('click', e => {
-  
       var enquiryName = document.getElementById("name").value;
       var enquiryEmail = document.getElementById("email").value;
       var enquiryPhone = document.getElementById("phone").value;
