@@ -29,6 +29,6 @@ onAuthStateChanged(auth, (user) => {
 
     } else {
     // User is signed out
-    window.location.href = "/portal/?from=" + window.location.pathname +"/" +  window.location.search;
+    window.location.href = "/portal/?from=" + window.location.pathname +  window.location.search;
     }
 });
