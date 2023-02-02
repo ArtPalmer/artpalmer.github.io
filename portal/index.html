@@ -2,11 +2,73 @@
 <html>
 <head>
     <title>Portal - Login</title>
-</head>
-<body>
-    <input type="text" id="email" placeholder="Email"/>
-    <input type="password" id="password" placeholder="Password"/>
-    <button id="login" name="login" value="Login">Login</button>
-    <script type="module" src="/internal/firebase/auth/firebaseAuthLogin.js"></script>
-</body>
+    <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
+    <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
+    <!-- flavicon  as jpg-->
+    <link rel="icon" type="image/jpg" href="/internal/assets/images/logo-styled.jpg">
+    <style>
+        .align {
+            text-align: center;
+        }
+        .page_description {
+            font-size: 35px;
+        }
+        .error{
+                color: #cc4a4a;
+        }
+        input{
+            width: 500px;
+            height: 150px;
+            font-size: 40px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 3px solid #000;
+        }
+        input:hover{
+            border: 3px solid rgb(60, 60, 60);
+        }
+        input:active{
+            border: 3px solid rgb(111, 127, 150);
+        }
+        button{
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 3px solid #000;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(60, 60, 60);
+            color: rgb(255, 255, 255);
+        }
+        button:active{
+            background-color: rgb(111, 127, 150);
+            color: rgb(255, 255, 255);
+        }
+    </style>
+   </head>
+   <body>
+      <header class="site-header">
+            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
+            <nav class="nav">
+               <a class="error" href="/">home</a>
+               <a class="error" href="/enquiry">enquiry</a>
+               <a class="error" href="/aboutus">about us</a>
+            </nav>
+        </header>
+        <div class="align">
+            <h1 class="site-header" style="font-size: 50px;">Portal Login</h1>
+            <p class="page_description">If you have found this you shoulden't be here. 😠</p>
+            <input type="text" id="email" placeholder="Email"/>
+            <input type="password" id="password" placeholder="Password"/>
+            <button id="login" name="login" value="Login">Login</button>
+            <script type="module" src="/internal/firebase/auth/firebaseAuthLogin.js"></script>
+        </div>
+    
+   </body>
+
 </html>

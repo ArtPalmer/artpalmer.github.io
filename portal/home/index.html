@@ -4,10 +4,92 @@
     <title>Portal - Home</title>
 </head>
 <body>
-    <h1 id="uuid"></h1>
-    <button onclick="window.location.href = '/portal/create'">Create New Artwork</button>
-    <button onclick="window.location.href = '/portal/get_artworks'">Get Artworks</button>
-    <button id="signout">Sign Out</button>
-    <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
+
 </body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portal - Login</title>
+    <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
+    <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
+    <!-- flavicon  as jpg-->
+    <link rel="icon" type="image/jpg" href="/internal/assets/images/logo-styled.jpg">
+    <style>
+        .align {
+            text-align: center;
+        }
+        .page_description {
+            font-size: 35px;
+        }
+        .error{
+                color: #cc4a4a;
+        }
+        input{
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 3px solid #000;
+        }
+        input:hover{
+            border: 3px solid rgb(60, 60, 60);
+        }
+        input:active{
+            border: 3px solid rgb(111, 127, 150);
+        }
+        button{
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            border: 3px solid #000;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(60, 60, 60);
+            color: rgb(255, 255, 255);
+        }
+        button:active{
+            background-color: rgb(111, 127, 150);
+            color: rgb(255, 255, 255);
+        }
+        /* footer locked at bottom og page */
+        .site-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+
+        }
+        #signout{
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+    </style>
+   </head>
+   <body>
+      <header class="site-header">
+            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
+            <nav class="nav">
+               <a class="error" href="/">home</a>
+               <a class="error" href="/enquiry">enquiry</a>
+               <a class="error" href="/aboutus">about us</a>
+            </nav>
+        </header>
+        <div class="align">
+            <h1 id="uuid"></h1>
+            <button onclick="window.location.href = '/portal/create'">Create New Artwork</button>
+            <button onclick="window.location.href = '/portal/get_artworks'">Get Artworks</button>
+            <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
+        </div>
+        <footer>
+            <a id="signout">Sign Out</a>
+        </footer>
+   </body>
+
 </html>

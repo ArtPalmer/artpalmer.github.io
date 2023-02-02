@@ -26,7 +26,8 @@ if (queryValue){
                 var enquiryEmail = enquiryData["email"];
                 var enquiryPhone = enquiryData["phone"];
                 var enquiryBody = enquiryData["body"];
-                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p>');
+                var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p><button id="deleteButton">Delete enquiry.</button><script>deleteButton.addEventListener("click", function(){window.location.href = "/portal/inquiries/delete?id=" + queryValue;});';
+                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
                 }else{
                         document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry ID: ' + queryValue + '</p><p>Enquiry not found.</p>');
                 }
@@ -35,3 +36,4 @@ if (queryValue){
 else{
         console.error("No query value found.")
 }
+

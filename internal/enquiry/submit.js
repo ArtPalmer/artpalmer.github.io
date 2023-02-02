@@ -1,6 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, ref, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, set, child, get, remove, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { createAndSend } from "/internal/enquiry/email_handler.js";
 // Initialize Firebase
 const firebaseConfig = {
@@ -15,30 +15,32 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
-var totalEnquiriesDB = null
+
+
+const createID_AssignToMap = new Promise((resolve, reject) => {
+  var generatedID = Math.random().toString(36).substr(2, 9);
+  var submitDT = new Date();
+  set(ref(db, 'enquiries/map/'+(generatedID)), {
+      "sumbitDate&Time": submitDT,
+  });
+  resolve(generatedID);
+});
+
 
 function submitEnquiry(enquiryName, enquiryEmail, enquiryPhone, body) {
-  get(child(dbRef, `enquiries/map/totalEnquiries`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      totalEnquiriesDB = snapshot.val()
-      
-      console.log(totalEnquiriesDB)
+      createID_AssignToMap.then((generatedID) => {
 
-      set(ref(db, 'enquiries/hidden/'+ (totalEnquiriesDB + 1)), {
-        "name": enquiryName,
-        "email": enquiryEmail,
-        "phone": enquiryPhone,
-        "body": body
-      });
-      console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
-      set(ref(db, 'enquiries/map'), {
-        "totalEnquiries": (totalEnquiriesDB + 1)
-      });
-      console.log({"totalEnquiries": (totalEnquiriesDB + 1)})
-      createAndSend(totalEnquiriesDB + 1);
-      }});
-      window.alert("Thank you for your enquiry, we will be in touch shortly");
-};
+        set(ref(db, 'enquiries/hidden/'+ (generatedID)), {
+          "name": enquiryName,
+          "email": enquiryEmail,
+          "phone": enquiryPhone,
+          "body": body
+        });
+        console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
+        createAndSend(generatedID);
+        });
+        window.alert("Thank you for your enquiry, we will be in touch shortly");
+      };
 
 submitenquiry.addEventListener('click', e => {
       var enquiryName = document.getElementById("name").value;
