@@ -1,8 +1,9 @@
+// IMPORTANT: The following code is used internally. It is not intended to be used by the public, it is authenticated.
+
+// Firebase Initilisation
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, get, ref, child, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
-
-// Initialize Firebase
+import { deletedEmail } from "/internal/enquiry/email_handler.js";
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
   "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -16,17 +17,16 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
 
+// Gets query
 const querys = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
+// Stores query 
 let queryValue = querys.id; //
-if (queryValue != "**00**"){
-        remove(child(dbRef, '/enquiries/hidden/'+queryValue)).then(() => {
-                console.log("Enquiry deleted.")
-                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry  ' + queryValue + ' deleted.</p>');
-        }).catch((error) => {console.error(error);});
-}
-else{
-    remove(child(dbRef, '/enquiries/hidden/')).then(() => {
-        console.log("Enquiries deleted.")
-        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>All enquiries deleted.</p>');
-}).catch((error) => {console.error(error);});
+
+// If querry is not null deletes the enquiry with the ID supplied in the query.
+if (queryValue != null){
+        console.log("Enquiry deleted.")
+        // Displays message to user.
+        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry  ' + queryValue + ' deleted.</p>');
+        // Deletes the enquiry. See internal\enquiry\email_handler.js for more information.
+        deletedEmail(queryValue);
 }

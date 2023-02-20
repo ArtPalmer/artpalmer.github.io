@@ -1,8 +1,7 @@
-
+// Firebase initilisation.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, set, child, get, remove, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { createAndSend } from "/internal/enquiry/email_handler.js";
-// Initialize Firebase
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
   "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -16,37 +15,33 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
 
-
-const createID_AssignToMap = new Promise((resolve, reject) => {
-  var generatedID = Math.random().toString(36).substr(2, 9);
-  var submitDT = new Date();
-  set(ref(db, 'enquiries/map/'+(generatedID)), {
-      "sumbitDate&Time": submitDT,
-  });
-  resolve(generatedID);
-});
-
-
+// Pushes enquiry, sends data to database. Needs to have enquiry name, email, phone and body defined.
 function submitEnquiry(enquiryName, enquiryEmail, enquiryPhone, body) {
-      createID_AssignToMap.then((generatedID) => {
-
-        set(ref(db, 'enquiries/hidden/'+ (generatedID)), {
-          "name": enquiryName,
-          "email": enquiryEmail,
-          "phone": enquiryPhone,
-          "body": body
-        });
-        console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
-        createAndSend(generatedID);
-        });
-        window.alert("Thank you for your enquiry, we will be in touch shortly");
+  // Generates a random ID for the enquiry.
+  var generatedID = Math.random().toString(36).substr(2, 9);
+  // Pushes the enquiry to the database.
+  console.log("Generated ID: " + generatedID);
+  set(ref(db, 'enquiries/'+ (generatedID)), {
+    "name": enquiryName,
+    "email": enquiryEmail,
+    "phone": enquiryPhone,
+    "body": body,
+    "date": (new Date()),
+  });
+  console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
+  // Sends create email.
+  createAndSend(generatedID);
+  window.alert("Thank you for your enquiry, we will be in touch shortly");
       };
 
+// When the submit button is clicked.
 submitenquiry.addEventListener('click', e => {
+      // Gets the data from the form.
       var enquiryName = document.getElementById("name").value;
       var enquiryEmail = document.getElementById("email").value;
       var enquiryPhone = document.getElementById("phone").value;
       var body = document.getElementById("body").value;
+      // Checks if the user has provided an email or phone number.
       if (enquiryEmail == "" && enquiryPhone != "") {
         enquiryEmail = "No Email Provided";
         submitEnquiry(enquiryName, enquiryEmail, enquiryPhone, body);

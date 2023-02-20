@@ -1,6 +1,6 @@
+// Firebase initilisation.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-// Initialize Firebase
 const firebaseConfig = {
     "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
     "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -13,8 +13,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-
+// Gets current auth user.
 const user = auth.currentUser;
+// If user clicks sign out button, sign out.
 try {signout.addEventListener('click', e => {
     signOut(auth).then(() => {console.log('User is signed out')}).catch((error) => {console.log(error)});
 })
@@ -22,6 +23,8 @@ try {signout.addEventListener('click', e => {
 catch(err) {
     console.log("Sign Out button not found.")
 }
+
+// If user is not signed in, redirect to login page.
 onAuthStateChanged(auth, (user) => {
     if (user) {
     // https://firebase.google.com/docs/reference/js/firebase.User

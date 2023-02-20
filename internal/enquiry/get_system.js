@@ -1,8 +1,8 @@
+// IMPORTANT: The following code is used internally. It is not intended to be used by the public, it is authenticated.
+
+// Firebase Initialisation
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-
-
-// Initialize Firebase
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
   "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -12,27 +12,35 @@ const firebaseConfig = {
   "messagingSenderId": "79542845581",
   "appId": "1:79542845581:web:9fb18c7104b8870b7de2c4"
 }
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
+
 const dbRef = ref(getDatabase());
 
+// Get query value.
 const querys = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
+// Stores query value.
 let queryValue = querys.id; //
+// If queryValue has a value, get the enquiry data.
 if (queryValue){
-        get(child(dbRef, '/enquiries/hidden/'+queryValue)).then((snapshot) => {
+        // Get the enquiry data.
+        get(child(dbRef, '/enquiries/'+queryValue)).then((snapshot) => {
                 if (snapshot.exists()) {
-                var enquiryData = snapshot.val();
-                var enquiryName = enquiryData["name"];
-                var enquiryEmail = enquiryData["email"];
-                var enquiryPhone = enquiryData["phone"];
-                var enquiryBody = enquiryData["body"];
-                var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p><button id="deleteButton">Delete enquiry.</button><script>deleteButton.addEventListener("click", function(){window.location.href = "/portal/inquiries/delete?id=" + queryValue;});';
-                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
-                }else{
+                        var enquiryData = snapshot.val();
+                        // Stores the data values into variables.
+                        var enquiryName = enquiryData["name"],
+                        enquiryEmail = enquiryData["email"],
+                        enquiryPhone = enquiryData["phone"],
+                        enquiryBody = enquiryData["body"];
+                        // Display the data.
+                        var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p><button onClick=\"window.location.href = \'/portal/enquiries/delete/?id=' + queryValue + '\'">Delete enquiry.</button>';
+                        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
+                }
+                // If the enquiry does not exist, display an error.
+                else{
                         document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry ID: ' + queryValue + '</p><p>Enquiry not found.</p>');
                 }
         }).catch((error) => {console.error(error);});
 }
+// If queryValue does not have a value, display an error.
 else{
         console.error("No query value found.")
 }

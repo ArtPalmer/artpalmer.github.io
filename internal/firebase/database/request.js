@@ -1,8 +1,8 @@
+// Firebase initilisation.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, set, child, get, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { uploadToCloud } from "../storage/upload.js";
 import { deleteFile } from "../storage/delete.js";
-// Initialize Firebase
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
   "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -17,22 +17,23 @@ const db = getDatabase();
 const dbRef = ref(getDatabase());
 var totalArtworksDB = null
 
-
+// When submit button is clicked.
 submitArtwork.addEventListener('click', e => {
-  
+  // Get totalArtworks, this is used to generate the artwork ID.
   get(child(dbRef, `gallery/map/totalArtworks`)).then((snapshot) => {
     if (snapshot.exists()) {
       window.alert("Artwork started uploading!")
       totalArtworksDB = snapshot.val()
       
       console.log(totalArtworksDB)
-
+      // Get artwork details from form.
       var artworkName = document.getElementById("artworkName").value;
       var artworkDescription = document.getElementById("artworkDescription").value;
       var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
       var materialsUsed = document.getElementById("materialsUsed").value;
       var artworkPrice = document.getElementById("artworkPrice").value;
       var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + (totalArtworksDB + 1) + ".jpg?alt=media"
+      // Upload artwork details to database.
       set(ref(db, 'gallery/artwork'+ (totalArtworksDB + 1)), {
         "artworkName": artworkName,
         "artworkDescription": artworkDescription,
@@ -44,7 +45,7 @@ submitArtwork.addEventListener('click', e => {
       
       console.log(artworkName, artworkDescription, artworkCompletionDate, materialsUsed)
     
-
+      // Update totalArtworks in database.
       set(ref(db, 'gallery/map'), {
         "totalArtworks": (totalArtworksDB + 1)
       });
@@ -57,15 +58,19 @@ submitArtwork.addEventListener('click', e => {
     console.error(error);
   });
 });
-
+// When delete button is clicked.
 deleteArtwork.addEventListener('click', e => {
+  // Confirm deletion.
   if (confirm("Do you really want to delete your artworks PERMANENTLY?")) {
+    // Get totalArtworks.
     get(child(dbRef, `gallery/map/totalArtworks`)).then((snapshot) => {
       if (snapshot.exists()) {
         var totalArtworks = snapshot.val()
+        // If there are no artworks, do nothing.
         if (totalArtworks == 0){
           
         }
+        // If there are artworks, delete them.
         else{
           console.log(totalArtworks)
           var i = 0
