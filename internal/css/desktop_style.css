@@ -7,6 +7,11 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 	}
+	.map{
+		width:900px;
+		height:450px;
+		border:0;
+	}
 	p{
 		margin-top: -5px;
 	}
@@ -110,6 +115,15 @@
 	}
 	.highlight{
 		color: rgb(82, 137, 255)
+	}
+	.side-menu{
+		display: none;
+	}
+	.hamb{
+		display: none;
+	}
+	mobile-nav{
+		display: none;
 	}
   }
   

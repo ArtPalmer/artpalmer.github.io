@@ -19,15 +19,33 @@ const dbRef = ref(getDatabase());
 function submitEnquiry(enquiryName, enquiryEmail, enquiryPhone, body) {
   // Generates a random ID for the enquiry.
   var generatedID = Math.random().toString(36).substr(2, 9);
+
+  get(child(dbRef, 'enquiries/map/totalEnquiries')).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+      var totalEnquiries = snapshot.val();
+      
+      totalEnquiries = totalEnquiries + 1;
+
+      set(ref(db, 'enquiries/map/totalEnquiries'), totalEnquiries);
+      set(ref(db, 'enquiries/map/'+ (totalEnquiries - 1)), {
+        generatedID
+      });
+
+    }
+  }).catch((error) => {console.error(error);});
+
   // Pushes the enquiry to the database.
+
   console.log("Generated ID: " + generatedID);
   set(ref(db, 'enquiries/'+ (generatedID)), {
     "name": enquiryName,
     "email": enquiryEmail,
     "phone": enquiryPhone,
-    "body": body,
-    "date": (new Date()),
+    "body": body
   });
+
+
   console.log({"name": enquiryName, "email": enquiryEmail, "phone": enquiryPhone, "body": body })
   // Sends create email.
   createAndSend(generatedID);

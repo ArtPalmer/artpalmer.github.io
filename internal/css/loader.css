@@ -16,8 +16,7 @@
 	/* center horizontaly */
 	justify-content: center;
 	margin-top: 35%;
-  }
-  
+  }  
 @keyframes pulse_red {
 	0% {
 		transform: scale(0.95);

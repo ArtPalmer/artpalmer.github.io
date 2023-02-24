@@ -2,7 +2,7 @@
 
 // Firebase Initilisation
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, get, ref, child, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, set, ref, child, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { deletedEmail } from "/internal/enquiry/email_handler.js";
 const firebaseConfig = {
   "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
@@ -23,10 +23,12 @@ const querys = new Proxy(new URLSearchParams(window.location.search), {get: (sea
 let queryValue = querys.id; //
 
 // If querry is not null deletes the enquiry with the ID supplied in the query.
-if (queryValue != null){
-        console.log("Enquiry deleted.")
-        // Displays message to user.
-        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry  ' + queryValue + ' deleted.</p>');
-        // Deletes the enquiry. See internal\enquiry\email_handler.js for more information.
-        deletedEmail(queryValue);
-}
+remove(child(dbRef, '/enquiries/'));
+set(child(dbRef, '/enquiries/map'), {
+    "totalEnquiries": 0
+});
+console.log("Enquiry deleted.")
+// Displays message to user.
+document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiries deleted.</p>');
+// Deletes the enquiry. See internal\enquiry\email_handler.js for more information.
+deletedEmail(queryValue);

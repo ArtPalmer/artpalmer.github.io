@@ -21,27 +21,31 @@ const querys = new Proxy(new URLSearchParams(window.location.search), {get: (sea
 let queryValue = querys.id; //
 // If queryValue has a value, get the enquiry data.
 if (queryValue){
-        // Get the enquiry data.
-        get(child(dbRef, '/enquiries/'+queryValue)).then((snapshot) => {
-                if (snapshot.exists()) {
-                        var enquiryData = snapshot.val();
-                        // Stores the data values into variables.
-                        var enquiryName = enquiryData["name"],
-                        enquiryEmail = enquiryData["email"],
-                        enquiryPhone = enquiryData["phone"],
-                        enquiryBody = enquiryData["body"];
-                        // Display the data.
-                        var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p><button onClick=\"window.location.href = \'/portal/enquiries/delete/?id=' + queryValue + '\'">Delete enquiry.</button>';
-                        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
-                }
-                // If the enquiry does not exist, display an error.
-                else{
-                        document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry ID: ' + queryValue + '</p><p>Enquiry not found.</p>');
-                }
-        }).catch((error) => {console.error(error);});
-}
+        if (queryValue){
+                // Get the enquiry data.
+                get(child(dbRef, '/enquiries/'+queryValue)).then((snapshot) => {
+                        if (snapshot.exists()) {
+                                var enquiryData = snapshot.val();
+                                // Stores the data values into variables.
+                                var enquiryName = enquiryData["name"],
+                                enquiryEmail = enquiryData["email"],
+                                enquiryPhone = enquiryData["phone"],
+                                enquiryBody = enquiryData["body"];
+                                // Display the data.
+                                var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p>';
+                                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
+                        }
+                        // If the enquiry does not exist, display an error.
+                        else{
+                                document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', '<p>Enquiry ID: ' + queryValue + '</p><p>Enquiry not found.</p>');
+                        }
+                }).catch((error) => {console.error(error);});
+        }
+}  
 // If queryValue does not have a value, display an error.
 else{
         console.error("No query value found.")
 }
+
+
 
