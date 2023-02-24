@@ -16,11 +16,11 @@ const auth = getAuth(app);
 const storage = getStorage(app);
 var file= [];
 
-export function uploadToCloud(artworkNumber){
+export function uploadToCloud(artworkID){
     // artworkUpload location in firebase storage.
-    const artworkStorageRef = ref(storage, ('/artworks/' + artworkNumber + '.jpg'));
+    const artworkStorageRef = ref(storage, ('/artworks/' + artworkID + '.jpg'));
 
-    console.log('/artworks/' + artworkNumber + '.jpg')
+    console.log('/artworks/' + artworkID + '.jpg')
     
     var fileElement = document.getElementById("artworkimageFile");
     file = fileElement.files[0];

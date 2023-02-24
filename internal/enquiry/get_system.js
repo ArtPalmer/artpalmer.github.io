@@ -32,7 +32,8 @@ if (queryValue){
                                 enquiryPhone = enquiryData["phone"],
                                 enquiryBody = enquiryData["body"];
                                 // Display the data.
-                                var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p><p>Email: ' + enquiryEmail + '</p><p>Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p>';
+                                var emailCode = '<p onClick="window.location.href = \'mailto:art?body=----------Don\'t%20delete%2C%20this%20will%20help%20us%20identify%20your%20enquiry%20later-----------%0A' + queryValue + '\'\">' + enquiryEmail + '</p>'
+                                var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p>' + emailCode + '<p onclick="window.open(\'tel:'+ enquiryPhone + '\');">Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p>';
                                 document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
                         }
                         // If the enquiry does not exist, display an error.

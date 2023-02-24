@@ -7,14 +7,25 @@
       <title>enquiry</title>
    </head>
    <body>
-      <header class="site-header">
+      <headers>
+         <header class="site-header">
             <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
             <nav class="nav">
-               <a href="/">home</a>
-               <a href="/enquiry/" class="page_active">enquiry</a>
-               <a href="/aboutus/" >about us</a>
+                  <a href="/">home</a>
+                  <a href="/enquiry">enquiry</a>
+                  <a href="" class="page_active">about us</a>
+                  <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
+                  <label id="hamb" class="hamb" for="side-menu"><span class="hamb-line"></span></label>
             </nav>
-       </header>
+
+
+      </header>
+      <mobile-nav id="mobile-nav" class="mobile-nav">
+         <a href="/">home</a>
+         <a href="/enquiry">enquiry</a>
+         <a href="" class="page_active">about us</a>
+       </mobile-nav>
+      </headers>
       <div class="align">
          <div class="_20px">
                <h1>Have a question or request?</h1>
@@ -42,7 +53,19 @@
          </div>
          <input class="form_input_submit" type="submit" id="submitenquiry">
        </div>
-       <div id="internal_email"></div>
+       <span id="internal_email"></span>
+
+
+       <script>
+         // if input is checked, hide the hamburger menu
+         document.getElementById("side-menu").addEventListener("change", function() {
+            if (this.checked) {
+               document.getElementById("mobile-nav").style.display = "flex";
+            } else {
+               document.getElementById("mobile-nav").style.display = "none";
+            }
+         });
+      </script>
    </body>
 
 </html>

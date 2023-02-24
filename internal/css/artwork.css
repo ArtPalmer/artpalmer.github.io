@@ -7,16 +7,28 @@
     .artwork{
         margin-left: 20px;
         margin-right: 20px;
-        width: 250px;
+        width: 600px;
     }
+
     .artwork_image{
         background: url("/internal/assets/images/temp/queen.png");
-        border-radius: 5px;
-        width: 250px;
+        border-radius: 10px;
+        width: inherit;
         height: auto;
     }
     artwork-title{
-        font-size: 1.5em;
+        display: flex;
+        font-size: 70px;
         font-weight: bold;
+        justify-content: center;
+    }
+    .artwork-description{
+        font-size: 1em;
+    }
+    .artwork-price{
+        font-size: 1em;
+    }
+    .artwork-button{
+        font-size: 1em;
     }
 }

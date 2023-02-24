@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @media (max-width: 1111px) { 
 	.align{
 		display: flex;
@@ -95,21 +96,10 @@ textarea{
 	header a{
 		display: none;
 	}
-	mobile-nav{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-		background: #656565;
-		line-height: 50px;
-		transition: all .5s ease-in-out;
-	}
-	mobile-nav a{
-		color: #ffffff;
-		font-size: 50px;
-		text-decoration: none;
-	}
+
+
+
+
 	.page_active{
 		color: #888888
 	}
@@ -138,37 +128,55 @@ textarea{
 
 
 
+
+
+
+
+
+
+
+	/* Mobile Nav */
+	.mobile-nav{
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		background: #d3d3d3;
+		line-height: 50px;
+	}
+	mobile-nav a{
+		color: #000000;
+		font-size: 50px;
+		text-decoration: none;
+	}
+	mobile-nav a:hover{
+		color: #383838;
+		font-size: 50px;
+		text-decoration: none;
+	}
+	mobile-nav a:active{
+		color: #494949;
+		font-size: 50px;
+		text-decoration: none;
+	}
+
 /* Menu Icon */
 .hamb{
+	display: flex;
+	justify-content: right;
+	align-items: end;
     cursor: pointer;
-    float: right;
-    padding: 40px 20px;
+	width: 100%
+    /* padding: 40px 20px; */
 }/* Style label tag */
 
 .hamb-line {
-    background: var(--white);
-    display: block;
-    height: 2px;
-    position: relative;
-    width: 24px;
-
-} /* Style span tag */
-
-.hamb-line::before,
-.hamb-line::after{
-    background: var(--white);
-    content: '--';
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all .2s ease-out;
-    width: 100%;
-}
-.hamb-line::before{
-    top: 5px;
-}
-.hamb-line::after{
-    top: -5px;
+	content: url(/internal/assets/icons/hamb_closed.svg);
+	height: 64px;
+	width:64px;
+	margin: 5px 0;
+	transition: all .2s ease-in-out;
 }
 
 .side-menu {

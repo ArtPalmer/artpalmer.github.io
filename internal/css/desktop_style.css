@@ -16,8 +16,11 @@
 		margin-top: -5px;
 	}
 	* {
-	  background: #F6F6F6;
+	  
 	  font-family: 'Roboto Mono';
+	}
+	body{
+		background: #F6F6F6;
 	}
 	
 	.site-header {

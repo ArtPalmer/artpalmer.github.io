@@ -6,21 +6,26 @@
       <title>Enquiry</title>
    </head>
    <body>
-      <header class="site-header">
+      <headers>
+         <header class="site-header">
             <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
             <nav class="nav">
                   <a href="/">home</a>
                   <a href="/enquiry">enquiry</a>
                   <a href="" class="page_active">about us</a>
+                  <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
+                  <label id="hamb" class="hamb" for="side-menu"><span class="hamb-line"></span></label>
             </nav>
-            <input class="side-menu" type="checkbox" id="side-menu"/>
-            <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
-       </header>
-       <mobile-nav class="mobile-nav">
+
+
+      </header>
+      <mobile-nav id="mobile-nav" class="mobile-nav">
          <a href="/">home</a>
          <a href="/enquiry">enquiry</a>
          <a href="" class="page_active">about us</a>
        </mobile-nav>
+      </headers>
+
             <div class="align description ">
                <p class="description_text" style="margin-top: 25px;">ArtPalmer is a small business based in the UK. We are a team of 2 who are passionate about art and design.</p>
                <p class="description_text">We are working together to provide the best art and service possible. </p>
@@ -38,6 +43,21 @@
                   <p>Test</p>
                </div>
             </div>
+
+
+
+
+
+            <script>
+               // if input is checked, hide the hamburger menu
+               document.getElementById("side-menu").addEventListener("change", function() {
+                  if (this.checked) {
+                     document.getElementById("mobile-nav").style.display = "flex";
+                  } else {
+                     document.getElementById("mobile-nav").style.display = "none";
+                  }
+               });
+            </script>
    </body>
 
 </html>
