@@ -5,30 +5,81 @@
         justify-content: space-evenly;
     }
     .artwork{
-        margin-left: 20px;
-        margin-right: 20px;
         width: 600px;
     }
 
     .artwork_image{
-        background: url("/internal/assets/images/temp/queen.png");
         border-radius: 10px;
         width: inherit;
         height: auto;
     }
-    artwork-title{
+    .artwork-title{
         display: flex;
         font-size: 70px;
         font-weight: bold;
-        justify-content: center;
     }
     .artwork-description{
-        font-size: 1em;
+        display: flex;
+        font-size: 40px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
     .artwork-price{
+        display: flex;
         font-size: 1em;
     }
     .artwork-button{
+        display: flex;
+        font-size: 1em;
+    }
+        hr{
+        border-top: 5px solid #000000;
+        border-radius: 5px;
+    }
+}
+
+@media (min-width: 1111px) {
+    .artworks{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .artwork{
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 400px;
+    }
+    hr{
+        border-top: 3px solid #000000;
+        border-radius: 5px;
+    }
+
+    .artwork_image{
+        border-radius: 10px;
+        width: inherit;
+    }
+    .artwork-title{
+        display: flex;
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .artwork-description{
+        display: flex;
+        font-size: 1em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+    }
+    .artwork-price{
+        display: flex;
+        font-size: 1em;
+    }
+    .artwork-button{
+        display: flex;
         font-size: 1em;
     }
 }

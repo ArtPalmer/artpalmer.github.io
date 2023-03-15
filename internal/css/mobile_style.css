@@ -22,7 +22,6 @@
 		font-size: 70px;
 	}
 	* {
-
 	  font-family: 'Roboto Mono';
 	}
 	body{
@@ -54,6 +53,17 @@
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
+		background: transparent;
+	}
+	.form_input_submit{
+		margin-left: 50%;
+		outline: none;
+		border: none;
+		margin-top: 15px;
+		font-size: 20px;
+		height: 40px;
+		cursor: pointer;
+		background: transparent;
 	}
 	.form_input{
 		outline: none;
