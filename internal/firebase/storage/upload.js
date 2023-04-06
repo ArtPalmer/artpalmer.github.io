@@ -2,6 +2,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { Fireworks } from 'https://esm.run/fireworks-js';
+
+
+
+
 const firebaseConfig = {
     "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
     "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -22,12 +27,13 @@ export function uploadToCloud(artworkID){
 
     console.log('/artworks/' + artworkID + '.jpg')
     
-    var fileElement = document.getElementById("artworkimageFile");
+    var fileElement = document.getElementById("artworkImageFile");
     file = fileElement.files[0];
     console.log(file)
     uploadBytes(artworkStorageRef, file).then((snapshot) => {
-        // document.getElementById("loader").style.display = "none";
-        window.alert("Artwork added to database.")
+        document.getElementById("alert-success").style.display = "block";
+        setTimeout(function(){ document.getElementById("alert-success").style.display = "none"; }, 3000);
+
     });
 }
 

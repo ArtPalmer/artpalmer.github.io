@@ -4,16 +4,16 @@
       <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
       <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
       <script src="/internal/enquiry/submit.js" type="module"></script>
-      <title>Enquiry</title>
+      <title>ENQUIRY</title>
    </head>
    <body>
       <headers>
          <header class="site-header">
-            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
+            <h1 class="page_title">ArtPalmer</h1> 
             <nav class="nav">
-                  <a href="/">home</a>
-                  <a href="/enquiry">enquiry</a>
-                  <a href="" class="page_active">about us</a>
+                  <a href="/">HOME</a>
+                  <a class="page_active" href="/enquiry">ENQUIRY</a>
+                  <a href="/aboutus/">ABOUT US</a>
                   <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
                   <label id="hamb" class="hamb" for="side-menu"><span class="hamb-line"></span></label>
             </nav>
@@ -21,14 +21,15 @@
 
       </header>
       <mobile-nav id="mobile-nav" class="mobile-nav">
-         <a href="/">home</a>
-         <a href="/enquiry">enquiry</a>
-         <a href="" class="page_active">about us</a>
+         <a href="/">HOME</a>
+         <a class="mobile-nav-active" 
+         href="/">ENQUIRY</a>
+         <a href="/aboutus/" >ABOUT US</a>
        </mobile-nav>
       </headers>
       <div class="align">
-         <div class="_20px">
-               <h1>Have a question or request?</h1>
+         <div class="_20px ">
+               <h1 class="header">Have a question or request?</h1>
                <p>Any enquiries on commissions or purchasing an artwork, please contact us.</p>
                <p>We don't bite. 🙃</p>
          <div class="social_media_container">
@@ -40,7 +41,7 @@
            <p>-</p>
            <a href="mailto:artpalmer.art@gmail.com"><img class="social_media_icon _32x32" src="/internal/assets/images/social_media/mail_FILL1_wght700_GRAD200_opsz20.svg"></a>
          </div>
-         <p>or</p>
+         <p style="margin-top: 2%;"class="header">or</p>
          <div class="form_container">
             <input type="text" class="form_input" id="name" placeholder=Name>
             <hr>

@@ -6,10 +6,15 @@
     <script type="module" src="/internal/firebase/database/request.js"></script>
     <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
     <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- flavicon  as jpg-->
     <link rel="icon" type="image/jpg" href="/internal/assets/images/logo-styled.jpg">
-    <style>
-        .align {
+
+<style>
+        * {
+            overflow-x: hidden;
+        }
+        /* .align {
             text-align: center;
         }
         .page_description {
@@ -50,10 +55,10 @@
         button:active{
             background-color: rgb(111, 127, 150);
             color: rgb(255, 255, 255);
-        }
+        } */
     </style>
    </head>
-   <body>
+   <body class="container">
       <header class="site-header">
             <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
             <nav class="nav">
@@ -64,20 +69,53 @@
         </header>
             <div class="align">
             <div class="container">
-                <input type="text" id="artworkName" placeholder="Artwork Name">
-                <input type="text" id="artworkDescription" placeholder="Artwork Description">
-                <input type="date" id="artworkCompletionDate" placeholder="Artwork Completion Date">
-                <input type="text" id="materialsUsed" placeholder="Materials Used">
-                <input type="number" id="artworkPrice" placeholder="Artwork Price">
-                <input type="file" id="artworkimageFile" name="filename">
+                <div class="alert alert-success" style="display: none;"  id="alert-success" role="alert">
+                    Artwork submitted successfully!
+                  </div>
+                  <div style="display: none;" class="alert alert-danger" id="alert-danger" role="alert">
+                    Successfully deleted all artworks!
+                  </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Name</span>
+                    <input type="text" class="form-control" id="artworkName" aria-describedby="basic-addon3">
+                  </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Short Artwork Description</span>
+                    <input type="text" class="form-control" id="artworkShortDescription" aria-describedby="basic-addon3">
+                  </div>
+ 
+                  <div class="input-group">
+                    <span class="input-group-text">Artwork Long Description</span>
+                    <input type="text" class="form-control" id="artworkLongDescription" aria-describedby="basic-addon3">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-text">Artwork Completion Date</span>
+                    <input type="date" id="artworkCompletionDate" placeholder="">
+                  </div>
+                  <div class="input-group mb-3">
+
+                    <span class="input-group-text" id="basic-addon3">Materials Used</span>
+                    <input type="text" class="form-control" id="materialsUsed" aria-describedby="basic-addon3">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">£</span>
+                    <input id="artworkPrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="artworkImageFile">
+                  </div>
+                  
                 </div>
-                <input type="submit" id="submitArtwork">
-                <button type="submit" id="deleteArtwork">Delete all artwork from database.</button>
+                <button type="button" id="submitArtwork" class="btn btn-outline-primary">Submit</button>
+                <button type="button" id="deleteArtwork" class="btn btn-outline-danger">Delete All Artworks!</button>
+                <img style="width: 90%; height: auto;" src="/internal/assets/images/ArtpalmerGalleryDatabaseStructure.png" alt="ArtpalmerGalleryDatabaseStructure"/>
             </div>
             <img style="visibility: hidden; margin-left: 50%;margin-right: 50%;" class="loader" src="/internal/assets/images/easel.svg">
             <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
         </div>
     </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
    </body>
 
 </html>

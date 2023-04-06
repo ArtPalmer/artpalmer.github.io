@@ -1,11 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @media (min-width: 1111px) {
+	.header{
+		color:#729B79;
+		font-weight: 900;
+	}
+	.page_title{
+		font-size: 60px;
+		font-weight: 900;
+		color:#F3E8EE
+	}
 	.align{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		flex-wrap: wrap;
+	}
+	.header_break{
+		height: 2px;
+        background-color: #F3E8EE;
+        border: none;
 	}
 	.map{
 		width:900px;
@@ -17,10 +31,11 @@
 	}
 	* {
 	  
-	  font-family: 'Roboto Mono';
+	  font-family: 'Work Sans';
 	}
 	body{
-		background: #F6F6F6;
+		background: #2E2C2F;
+		color: #F3E8EE;
 	}
 	
 	.site-header {
@@ -91,13 +106,17 @@
 	  	font-size: 30px;
 	  	line-height: 40px;
 	  	justify-content: flex-end;
-	  	color: #000000;
+	  	color: #F3E8EE;
 	  	margin-right: 10px;
 	  	margin-left: 10px;
 
 	}
+	header a:hover{
+		color: #7b9c80;
+		text-decoration: none;
+	}
 	.page_active{
-		color: #888888
+		color: #729B79
 	}
 	
 	footer{
@@ -129,6 +148,108 @@
 	}
 	mobile-nav{
 		display: none;
+	}
+
+
+
+
+
+
+
+	/* About Us */
+	.about_us_hero_header{
+		margin-top: -2%;
+		color:#729B79;
+		font-size: 60px;
+		font-weight: 900;
+		text-align: center;
+		text-decoration: underline;
+	}
+	.artist_about_container{
+		height: 650px
+	}
+	.artist_image{
+		margin-left: 5%;
+		width: 400px;
+		height: auto;
+		float:left; 
+		display:inline;
+	}
+	.artist_about{
+		margin-left: 34%;
+		
+	}
+	.artist_about h1{
+		color:#729B79;
+		font-size: 40px;
+		font-weight: 900;
+		text-decoration: underline;
+	}
+	.artist_about p{
+		font-weight: 400;
+		font-size: 25px;
+	}
+	.highlighted{
+		font-weight: 800;
+		color: #7c9e82;
+	}
+
+	.developer_us_hero_header{
+		margin-top: -2%;
+		color:#729B79;
+		font-size: 60px;
+		font-weight: 900;
+		text-align: center;
+		text-decoration: underline;
+	}
+	.developer_about_container{
+		/* border: #7b9c80 2px solid; */
+		height: 500px
+	}
+	.developer_image{
+		margin-left: 5%;
+		height: auto;
+		float:left; 
+		display:inline;
+		width: 400px;
+
+	}
+	.developer_about{
+		margin-left: 34%;
+
+	
+		
+	}
+	.developer_about h1{
+		color:#729B79;
+		font-size: 40px;
+		font-weight: 900;
+		text-decoration: underline;
+	}
+	.developer_about p{
+		font-weight: 400;
+		font-size: 25px;
+	}
+
+	.bottom_gap{
+		margin-bottom: 5%;
+	}
+
+
+	.developer_contact{
+		margin-top: 5%;
+
+	}
+	.developer_contact h1{
+		color:#729B79;
+		font-size: 30px;
+		font-weight: 900;
+		text-decoration: underline;
+	}
+	.developer_contact a{
+		color: #7b9c80;
+		font-weight: 900;
+		text-decoration: underline;
 	}
   }
   

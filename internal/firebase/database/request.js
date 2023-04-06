@@ -20,38 +20,38 @@ var totalArtworksDB = null
 // When submit button is clicked.
 submitArtwork.addEventListener('click', e => {
   get(child(dbRef, 'gallery/map/totalArtworks')).then((snapshot) => {
-    if (snapshot.exists()) {
       var generatedID = Math.random().toString(36).substr(2, 9);
       console.log(snapshot.val());
-      var totalArtworks = snapshot.val();
+      // var totalArtworks = snapshot.val();
       
-      totalArtworks = totalArtworks + 1;
+      // totalArtworks = totalArtworks + 1;
 
-      set(ref(db, 'gallery/map/totalArtworks'), totalArtworks);
-      set(ref(db, 'gallery/map/'+ (totalArtworks - 1)), {
-        generatedID
-      });
+      // set(ref(db, 'gallery/map/totalArtworks'), totalArtworks);
+      // set(ref(db, 'gallery/map/'+ (totalArtworks - 1)), {
+      //   generatedID
+      // });
 
       var artworkName = document.getElementById("artworkName").value;
-      var artworkDescription = document.getElementById("artworkDescription").value;
+      var artworkShortDescription = document.getElementById("artworkShortDescription").value;
+      var artworkLongDescription = document.getElementById("artworkLongDescription").value;
       var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
       var materialsUsed = document.getElementById("materialsUsed").value;
       var artworkPrice = document.getElementById("artworkPrice").value;
-      var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + (totalArtworksDB + 1) + ".jpg?alt=media";
+      var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + generatedID+ ".jpg?alt=media";
       // Upload artwork details to database.
       set(ref(db, 'gallery/'+ (generatedID)), {
         "artworkName": artworkName,
-        "artworkDescription": artworkDescription,
+        "artworkDescription": {
+          "shortDescription": artworkShortDescription,
+          "longDescription": artworkLongDescription
+        },
         "artworkCompletionDate": artworkCompletionDate,
         "materialsUsed": materialsUsed,
         "artworkPrice": artworkPrice,
         "artworkPictureURL": artworkPictureURL
       });
       uploadToCloud(generatedID);
-      console.log(artworkName, artworkDescription, artworkCompletionDate, materialsUsed)
-    } else {
-      console.log("No data available");
-    }
+      console.log(artworkName, artworkShortDescription, artworkLongDescription, artworkCompletionDate, materialsUsed)
   }).catch((error) => {
     console.error(error);
   });
@@ -105,9 +105,8 @@ submitArtwork.addEventListener('click', e => {
 deleteArtwork.addEventListener('click', e => {
   // Confirm deletion.
   if (confirm("Do you really want to delete your artworks PERMANENTLY?")) {
-    // Get totalArtworks.
     remove(child(dbRef, '/gallery/'));
-    set(child(dbRef, '/gallery/map'), {
-        "totalArtworks": 0
-    })};
+  };
+    document.getElementById("alert-danger").style.display = "block";
+    setTimeout(function(){ document.getElementById("alert-danger").style.display = "none"; }, 3000);
 });

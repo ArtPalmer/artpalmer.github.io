@@ -3,51 +3,58 @@
    <head>
       <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
       <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
-      <title>Enquiry</title>
+      <title>ABOUT US</title>
+      <!-- Flavicon  from svg -->
+      <link rel="icon" type="image/svg+xml" href="/internal/assets/images/flavicon.svg">
    </head>
    <body>
       <headers>
          <header class="site-header">
-            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
+            <h1 class="page_title">ArtPalmer</h1> 
             <nav class="nav">
-                  <a href="/">home</a>
-                  <a href="/enquiry">enquiry</a>
-                  <a href="" class="page_active">about us</a>
+                  <a href="/">HOME</a>
+                  <a href="/enquiry">ENQUIRY</a>
+                  <a class="page_active" href="/aboutus/">ABOUT US</a>
                   <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
-                  <label id="hamb" class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+                  <label id="hamb" class="hamb " for="side-menu"><span class="hamb-line _6margintop"></span></label>
             </nav>
 
 
       </header>
       <mobile-nav id="mobile-nav" class="mobile-nav">
-         <a href="/">home</a>
-         <a href="/enquiry">enquiry</a>
-         <a href="" class="page_active">about us</a>
+         <a href="/">HOME</a>
+         <a class="mobile-nav-active" href="/enquiry">ENQUIRY</a>
+         <a href="" >ABOUT US</a>
        </mobile-nav>
       </headers>
-
-            <div class="align description ">
-               <p class="description_text" style="margin-top: 25px;">ArtPalmer is a small business based in the UK. We are a team of 2 who are passionate about art and design.</p>
-               <p class="description_text">We are working together to provide the best art and service possible. </p>
-               <p class="description_text"> We use only the finest art materials sourced localy, in Birmingham, Cass Art.</p>
-               <p class="description_text"> We are a small team but we are dedicated to providing the best service possible!</p>
+      <div>
+         <h1 class="about_us_hero_header">ABOUT US</h1>
+         <div class="artist_about_container">
+            <img class="artist_image" id="mainContent" src="/internal/assets/images/artpalmer.JPG">
+            <div class="artist_about">
+               <h1 class="artist_about_hero">Art Palmer - Artist</h1>
+               <p>As a young artist <span class="highlighted">based in Birmingham</span>, I am deeply passionate about creating meaningful and impactful pieces of art. My goal as an artist is to not only create aesthetically pleasing works, but to also evoke emotion and inspire thought in those who view them. I strive to create art that tells a story, that communicates a message, or that captures a moment in time.</p>      
+                  <p>Ultimately, my art is a reflection of myself and the world around me. I am committed to exploring new ideas and pushing the boundaries of traditional art forms. Through my work, I hope to connect with others and create a shared experience that inspires and enriches our lives.</p>
+                  <p>In terms of quality, I hold myself to a high standard. I am constantly seeking to improve my technique and push myself to create art that is not only beautiful, but also technically sound. I believe that a successful piece of art requires a strong foundation of skill and technical ability, <span class="highlighted">as well as a unique creative vision.</span></p>
             </div>
-            <div class="align">
-               <h1 class="about_title">My Materials</h1>
-               <iframe class="map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgZHjDoK9JuF_LAQMQUUO-fpQ6xQY9AXE&q=Cass+Art,Birmingham&maptype=satellite&zoom=15"></iframe>
-            </div>
-            <div class="align about_artist_container">
-               <div class="align about_artist">
-                  <h1>The Artist</h1>
-                  <img style="height: 400px; width: 400; border: 5px; border-color: brown;" src="/internal/assets/images/temp.png" alt="Temporary Image Placeholder (Art Palmer)" class="artist"/>
-                  <p>Test</p>
+         </div>
+      </div>
+      <div class="bottom_gap">
+         <div class="developer_about_container">
+            <img class="developer_image" id="mainContent" src="/internal/assets/images/austinharrison.jpg">
+            <div class="developer_about">
+               <h1 class="developer_about_hero">Austin Harrison - Developer</h1>
+               <p>Hey there, I'm the developer for ArtPalmer's website! Art and I have know each other for around ten year, so I was excited to take on this project. We've been working on it for over a year now and we've got some cool features that I'm pretty proud of. I've spent countless hours tweaking and perfecting everything to make sure it looks and works great. It's been awesome to see Art's amazing work come to life on the site, and I'm excited to see where it goes from here!</p>
+               <div class="developer_contact">
+                  <h1>Found a problem or have a suggestion?</h2>
+                  <p>Me and Art both care about his website looks and functions, if you find a problem or have any suggestions, please <a href="mailto:austin@artpalmer.com">feel free to email me!</a></p>
+                  
                </div>
             </div>
+         </div>
+      </div>
 
-
-
-
-
+   </div>
             <script>
                // if input is checked, hide the hamburger menu
                document.getElementById("side-menu").addEventListener("change", function() {
