@@ -7,58 +7,24 @@
     <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
     <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!-- flavicon  as jpg-->
     <link rel="icon" type="image/jpg" href="/internal/assets/images/logo-styled.jpg">
 
 <style>
-        * {
+        body {
             overflow-x: hidden;
+            background-color: #2E2C2F;
         }
-        /* .align {
-            text-align: center;
+        label{
+            color: #F3E8EE;
         }
-        .page_description {
-            font-size: 35px;
+        .site-header{
+          background-color: #2E2C2F;
         }
-        .error{
-                color: #cc4a4a;
-        }
-        input{
-            width: 300px;
-            height: 50px;
-            font-size: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            border: 3px solid #000;
-        }
-        input:hover{
-            border: 3px solid rgb(60, 60, 60);
-        }
-        input:active{
-            border: 3px solid rgb(111, 127, 150);
-        }
-        button{
-            width: 300px;
-            height: 60px;
-            font-size: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            border: 3px solid #000;
-            background-color: #000;
-            color: #fff;
-            cursor: pointer;
-        }
-        button:hover{
-            background-color: rgb(60, 60, 60);
-            color: rgb(255, 255, 255);
-        }
-        button:active{
-            background-color: rgb(111, 127, 150);
-            color: rgb(255, 255, 255);
-        } */
     </style>
    </head>
-   <body class="container">
+   <body class="">
       <header class="site-header">
             <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
             <nav class="nav">
@@ -104,7 +70,12 @@
                 <div class="input-group mb-3">
                     <input type="file" class="form-control" id="artworkImageFile">
                   </div>
-                  
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" id="sold" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Sold?
+                    </label>
+                  </div>
                 </div>
                 <button type="button" id="submitArtwork" class="btn btn-outline-primary">Submit</button>
                 <button type="button" id="deleteArtwork" class="btn btn-outline-danger">Delete All Artworks!</button>

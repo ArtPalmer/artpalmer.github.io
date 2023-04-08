@@ -37,7 +37,12 @@
 		background: #2E2C2F;
 		color: #F3E8EE;
 	}
-	
+	input{
+		color: #F3E8EE;
+	}
+	textarea{
+		color: #F3E8EE;
+	}
 	.site-header {
 	  display: flex;
 	  justify-content: space-between;
@@ -88,6 +93,7 @@
 		background: transparent;
 	}
 	.form_input_submit{
+		background: transparent;
 		margin-left: 50%;
 		outline: none;
 		border: none;

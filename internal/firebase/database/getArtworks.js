@@ -39,6 +39,7 @@ function getArtworkOneRequest(){
           var artworkPrice = artwork["artworkPrice"];
           var materialsUsed = artwork["materialsUsed"];
           var artworkPictureURL = artwork["artworkPictureURL"];
+          var artworkSold = artwork["sold"]
 
           i++
         }

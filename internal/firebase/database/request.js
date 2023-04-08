@@ -37,21 +37,29 @@ submitArtwork.addEventListener('click', e => {
       var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
       var materialsUsed = document.getElementById("materialsUsed").value;
       var artworkPrice = document.getElementById("artworkPrice").value;
-      var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + generatedID+ ".jpg?alt=media";
-      // Upload artwork details to database.
-      set(ref(db, 'gallery/'+ (generatedID)), {
-        "artworkName": artworkName,
-        "artworkDescription": {
-          "shortDescription": artworkShortDescription,
-          "longDescription": artworkLongDescription
-        },
-        "artworkCompletionDate": artworkCompletionDate,
-        "materialsUsed": materialsUsed,
-        "artworkPrice": artworkPrice,
-        "artworkPictureURL": artworkPictureURL
-      });
-      uploadToCloud(generatedID);
-      console.log(artworkName, artworkShortDescription, artworkLongDescription, artworkCompletionDate, materialsUsed)
+      var sold = document.getElementById("sold").checked;
+      if (artworkName && artworkShortDescription && artworkLongDescription && artworkCompletionDate && materialsUsed && artworkPrice) {
+        console.log("tea - " + sold)
+        var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + generatedID+ ".jpg?alt=media";
+        // Upload artwork details to database.
+        set(ref(db, 'gallery/'+ (generatedID)), {
+          "artworkName": artworkName,
+          "artworkDescription": {
+            "shortDescription": artworkShortDescription,
+            "longDescription": artworkLongDescription
+          },
+          "artworkCompletionDate": artworkCompletionDate,
+          "materialsUsed": materialsUsed,
+          "artworkPrice": artworkPrice,
+          "artworkPictureURL": artworkPictureURL,
+          "sold": sold
+        });
+        uploadToCloud(generatedID)
+        document.getElementById("sold").checked = false;
+        console.log(artworkName, artworkShortDescription, artworkLongDescription, artworkCompletionDate, materialsUsed)
+      } else {
+        window.alert("Please fill in all the fields.")
+      }
   }).catch((error) => {
     console.error(error);
   });

@@ -18,6 +18,17 @@ const dbRef = ref(getDatabase());
 
 const querys = new Proxy(new URLSearchParams(window.location.search), {get: (searchParams, prop) => searchParams.get(prop),});
 let queryValue = querys.id;
+
+function isSoldTrue(artworkSold){
+  if (artworkSold == true){
+    return " • Sold";
+  }else if (artworkSold == false){
+    return "";
+  }else{
+    return " • Internal server error. Please contact the developer.";
+  }
+
+}
 get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
   if (snapshot.exists()) {
     var data = snapshot.val();
@@ -34,10 +45,12 @@ get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
     var artworkDescription = data.artworkDescription.longDescription;
     var artowrkMaterials = data.materialsUsed;
     var artworkImageURL = data.artworkPictureURL;
+    var artworkSold = data.sold;
+
     document.getElementById("single_artwork_container").innerHTML = `
     <img class="single_artwork_image" id="artworkImage" src="${artworkImageURL}">
     <h1 class="single_artwork_name">${artworkName}</h1>
-    <p class="single_artwork_price_date">${artworkPrice} • ${artworkCompletionDate}</p>
+    <p class="single_artwork_price_date">${artworkPrice} • ${artworkCompletionDate}${isSoldTrue(artworkSold)}</p>
     <p class="single_artwork_materials">${artowrkMaterials}</p>
     <p class="single_artwork_description">${artworkDescription}</p>`;
   var img = document.getElementById("artworkImage");
@@ -49,10 +62,13 @@ get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
   } else {
     img.setAttribute('id', 'portrait')
   }
-    console.log(artworkName, artworkPrice, artworkCompletionDate, artworkDescription, artowrkMaterials, artworkImageURL);
+    console.log(artworkName, artworkPrice, artworkCompletionDate, artworkDescription, artowrkMaterials, artworkImageURL, artworkSold);
   } else {
-    console.log("No data available");
+    document.getElementById("single_artwork_container").innerHTML = `
+    <h1 class="single_artwork_name">Artwork not found</h1>`
   }
 }).catch((error) => {
   console.error(error);
+  document.getElementById("single_artwork_container").innerHTML = `
+  <h1 class="single_artwork_name">Artwork not found</h1>`
 });
