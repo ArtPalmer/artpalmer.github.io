@@ -31,6 +31,7 @@ export function uploadToCloud(artworkID){
     file = fileElement.files[0];
     console.log(file)
     uploadBytes(artworkStorageRef, file).then((snapshot) => {
+        document.getElementById("alert-success").innerHTML = `Artwork uploaded successfully! - <a href='https://artpalmer.com/artwork/?id=${artworkID}'>Click here to view</a>`;
         document.getElementById("alert-success").style.display = "block";
         setTimeout(function(){ document.getElementById("alert-success").style.display = "none"; }, 3000);
 

@@ -9,7 +9,7 @@
 	}
 	.page_title{
 		margin-top: 6%;
-		font-size: 90px;
+		font-size: 110px;
 		color:#F3E8EE
 	}
 	.align{
@@ -185,6 +185,7 @@ textarea{
 		flex-wrap: wrap;
 		/* background: #d3d3d3; */
 		line-height: 50px;
+		margin-bottom: 5%;
 	}
 	mobile-nav a{
 		margin-top: 2%;
@@ -206,12 +207,12 @@ textarea{
 
 /* Menu Icon */
 .hamb{
-	margin-left: 300%;
+	margin-left: 190%;
 	display: flex;
 	justify-content: right;
 	align-items: end;
     cursor: pointer;
-	width: 100%
+	width: 100%;
     /* padding: 40px 20px; */
 }/* Style label tag */
 
@@ -319,10 +320,6 @@ textarea{
 		font-size: 25px;
 	}  */
 
-	.bottom_gap{
-	}
-
-
 	.developer_contact{
 		margin-top: 5%;
 
@@ -338,4 +335,41 @@ textarea{
 		font-weight: 900;
 		text-decoration: underline;
 	}
+		/* Single Artwork Display */
+		.single_artwork_container{
+			margin-left: 5%;
+			margin-right: 5%;
+	  }
+	  .single_artwork_image {
+		width:  100%;
+		height: auto;
+	  }
+	  .single_artwork_name{
+		margin: 0%;
+		color: #729B79;
+		font-size: 90px;
+		font-weight: 900;
+		text-decoration: underline;
+		text-align: center;
+	  }
+	  .single_artwork_price_date{
+	
+		margin-top: 1%;
+		text-align: center;
+		font-size: 60px;
+		color: #729B79;
+		font-weight: 700;
+	  }
+	  .single_artwork_materials{
+		text-align: center;
+		margin-top: -5%;
+		font-size: 35px;
+		color: #729B79;
+		font-weight: 500;
+	  }
+	  .single_artwork_description{
+		margin-left: 2%;
+		margin-right: 2%;
+		font-size: 50px;
+	  }
   }

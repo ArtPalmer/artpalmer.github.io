@@ -3,41 +3,51 @@
    <head>
       <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
       <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
-      <link href="/internal/css/artwork.css" rel="stylesheet"/>
-      <title>Artwork</title>
+      <script type="module" src="/internal/firebase/database/getArtwork.js"></script>
+      <title>ARTWORK</title>
+      <!-- Flavicon  from svg -->
+      <link rel="icon" type="image/svg+xml" href="/internal/assets/images/flavicon.svg">
    </head>
    <body>
       <headers>
          <header class="site-header">
-            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
+            <h1 class="page_title">ArtPalmer</h1> 
             <nav class="nav">
-                  <a href="/">home</a>
-                  <a href="/enquiry">enquiry</a>
-                  <a href="" class="page_active">about us</a>
+                  <a href="/">HOME</a>
+                  <a href="/enquiry">ENQUIRY</a>
+                  <a href="/aboutus/">ABOUT US</a>
                   <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
-                  <label id="hamb" class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+                  <label id="hamb" class="hamb " for="side-menu"><span class="hamb-line _6margintop"></span></label>
             </nav>
+
+
       </header>
       <mobile-nav id="mobile-nav" class="mobile-nav">
-         <a href="/">home</a>
-         <a href="/enquiry">enquiry</a>
-         <a href="" class="page_active">about us</a>
-       </mobile-nav>
+         <a href="/">HOME</a>
+         <a href="/enquiry">ENQUIRY</a>
+         <a href="/aboutus/" >ABOUT US</a>
+       </mobile-nav class="mobile-nav-bottom-margin">
       </headers>
+      <div id="single_artwork_container" class="single_artwork_container">
+         <!-- <img class="single_artwork_image" id="portrait" src="/internal/assets/images/artpalmer.JPG">
+         <h1 class="single_artwork_name">Art Palmer</h1>
+         <p class="single_artwork_price_date">£99.00 • 12.01.12</p>
+         <p class="single_artwork_materials">Pen, Paint, Acrylic</p>
+         <p class="single_artwork_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices id neque nec gravida. Quisque vehicula lobortis arcu. Ut metus diam, viverra eu dolor quis, pulvinar porta ex. Ut sit amet auctor leo, ac dictum velit. Sed interdum purus lorem, eget efficitur mi dignissim at. Praesent lacinia vestibulum aliquam. Nunc nec elit nec lorem molestie laoreet. Proin elementum ante pulvinar, sodales est nec, fermentum lorem. Suspendisse vehicula eu turpis et euismod. In lobortis volutpat erat non ullamcorper. Proin ut feugiat massa.</p> -->
+      </div>
 
 
-
-   <script>
-      // if input is checked, hide the hamburger menu
-      document.getElementById("side-menu").addEventListener("change", function() {
-         if (this.checked) {
-            document.getElementById("mobile-nav").style.display = "flex";
-         } else {
-            document.getElementById("mobile-nav").style.display = "none";
-         }
-      });
-   </script>
-
+   </div>
+            <script>
+               // if input is checked, hide the hamburger menu
+               document.getElementById("side-menu").addEventListener("change", function() {
+                  if (this.checked) {
+                     document.getElementById("mobile-nav").style.display = "flex";
+                  } else {
+                     document.getElementById("mobile-nav").style.display = "none";
+                  }
+               });
+            </script>
    </body>
 
 </html>
