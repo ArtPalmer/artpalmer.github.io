@@ -20,7 +20,29 @@ var totalArtworksDB = null
 // When submit button is clicked.
 submitArtwork.addEventListener('click', e => {
   get(child(dbRef, 'gallery/map/totalArtworks')).then((snapshot) => {
+    
+    var artworkName = document.getElementById("artworkName").value;    var artworkLongDescription = document.getElementById("artworkLongDescription").value;
+    var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
+    artworkCompletionDate = artworkCompletionDate.replace(/\//g, '-');
+    artworkCompletionDate = artworkCompletionDate.replace(/-/g, '-');
+    var materialsUsed = document.getElementById("materialsUsed").value;
+    var artworkPrice = document.getElementById("artworkPrice").value;
+    var artworkSize = document.getElementById("artworkSize").value;
+    var sold = document.getElementById("sold").checked;
+    var digital = document.getElementById("digital").checked;
+
       var generatedID = Math.random().toString(36).substr(2, 9);
+      var currentDate = new Date();
+      var currentYear = String(currentDate.getFullYear());
+      var currentMonth = String(currentDate.getMonth() + 1);
+      var currentDay = String(currentDate.getDate());
+      var currentHour = String(currentDate.getHours());
+      var currentMinute = String(currentDate.getMinutes());
+      var currentSecond = String(currentDate.getSeconds());
+      var formated = currentYear + currentMonth + currentDay + currentHour + currentMinute + currentSecond;
+      generatedID = formated + generatedID;
+      console.log(formated);
+      console.log(generatedID);
       console.log(snapshot.val());
       // var totalArtworks = snapshot.val();
       
@@ -31,35 +53,29 @@ submitArtwork.addEventListener('click', e => {
       //   generatedID
       // });
 
-      var artworkName = document.getElementById("artworkName").value;
-      var artworkShortDescription = document.getElementById("artworkShortDescription").value;
-      var artworkLongDescription = document.getElementById("artworkLongDescription").value;
-      var artworkCompletionDate = document.getElementById("artworkCompletionDate").value;
-      var materialsUsed = document.getElementById("materialsUsed").value;
-      var artworkPrice = document.getElementById("artworkPrice").value;
-      var sold = document.getElementById("sold").checked;
-      if (artworkName && artworkShortDescription && artworkLongDescription && artworkCompletionDate && materialsUsed && artworkPrice) {
-        console.log("tea - " + sold)
+      // if (artworkName && artworkShortDescription && artworkLongDescription && artworkCompletionDate && materialsUsed && artworkPrice) {
         var artworkPictureURL = "https://firebasestorage.googleapis.com/v0/b/artpalmer-c1db0.appspot.com/o/artworks%2F" + generatedID+ ".jpg?alt=media";
         // Upload artwork details to database.
         set(ref(db, 'gallery/'+ (generatedID)), {
           "artworkName": artworkName,
           "artworkDescription": {
-            "shortDescription": artworkShortDescription,
             "longDescription": artworkLongDescription
           },
           "artworkCompletionDate": artworkCompletionDate,
           "materialsUsed": materialsUsed,
           "artworkPrice": artworkPrice,
           "artworkPictureURL": artworkPictureURL,
-          "sold": sold
+          "artworkSize": artworkSize,
+          "sold": sold,
+          "digital": digital
         });
         uploadToCloud(generatedID)
         document.getElementById("sold").checked = false;
+        document.getElementById("digital").checked = false;
         console.log(artworkName, artworkShortDescription, artworkLongDescription, artworkCompletionDate, materialsUsed)
-      } else {
-        window.alert("Please fill in all the fields.")
-      }
+      // } else {
+      //   window.alert("Please fill in all the fields.")
+      // }
   }).catch((error) => {
     console.error(error);
   });

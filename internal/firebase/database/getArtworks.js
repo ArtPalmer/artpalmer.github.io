@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, get, ref, child, orderByChild } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 
 // Initialize Firebase
@@ -15,15 +15,81 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
+const galleryRef = ref(getDatabase(), 'gallery/');
+// function reformatDate(date, generatedID){
+//   var dateLength = date.length
+//   var currentDate = new Date();
+//   var currentYear = currentDate.getFullYear().toString();
+//   var currentYearStart = currentYear.slice(0,2);
+//   console.log(currentYear)
+//   // dateLength = dateLength - 2; //Compenstate for the 2 characters that are not part of the date
+//   if (dateLength == 8){
+//     // 00/00/00 or 0/0/0000
+//     // check if 2nd character is a /
+//     if (date.charAt(2) == "."){
+//       var date_day = date.slice(0,2);
+//       var date_month = date.slice(3,5);
+//       var date_year = date.slice(6,8);
+//       var reformatedDateVar = currentYearStart + date_year + "/" + date_month + "/" + date_day;
+//       console.log("00/00/00", reformatedDateVar)
+//     }else{
+//       var date_day = date.slice(0,2);
+//       var date_month = date.slice(3,5);
+//       var date_year = date.slice(3, 5);
+//       var reformatedDateVar = currentYearStart + date_year + "/" + date_month + "/" + date_day;
+//       console.log(reformatedDateVar, date)
+//       // 0/0/0000
+
+//     }
+//   } else if (dateLength == 10){
+//     var date_day = date.slice(0,2);
+//     var date_month = date.slice(3,5);
+//     var date_year = date.slice(6,10);
+//     var reformatedDateVar = date_year + "/" + date_month + "/" + date_day;
+//     // 00/00/0000
+//   } else if (dateLength == 8){
+//     var date_day = date.slice(0,2);
+//     var date_month = date.slice(3,5);
+//     var date_year = date.slice(6,8);
+//     var reformatedDateVar = currentYearStart + date_year + "/" + date_month + "/" + date_day;
+//     console.log("00/00/00", date, reformatDateVar)
+//     // 0/0/00
+//   }else if(dateLength == 6){
+//     var date_day = date.slice(0,1);
+//     var date_month = date.slice(2,3);
+//     var date_year = date.slice(4,6);
+//     var reformatedDateVar = currentYearStart + date_year + "/" + date_month + "/" + date_day;
+//     console.log(reformatedDateVar, date)
+//     // 0/0/0000
+//   }
+//   return `${reformatedDateVar}`;
+// }
+// function custom_sort(a, b) {
+//   return new Date(a.artworkCompletionDate.getTime()) - new Date(b.artworkCompletionDate).getTime();
+// }
+// var your_array = [
+//   {lastUpdated: "2010/01/01"},
+//   {lastUpdated: "2009/01/01"},
+// //   {lastUpdated: "2010/07/01"}
+// // ];
+// function order() {
+//   galleryRef.orderByChild("date").on("value", function(snapshot) {
+//     snapshot.forEach(snap => {
+//       const issue = snap.val();
+//       console.log(issue);
+//   // More code but we don't need to see it here
+//     });
+//   });
+// }
 function getArtworkOneRequest(){
   get(child(dbRef, 'gallery/')).then((snapshot) => {
 
     if (snapshot.exists()){ 
        var galleryData = snapshot.val();
-       // Get all the keys in the object#
 
 
-        var keys = Object.keys(galleryData);
+
+        var keys = Object.keys(galleryData).reverse();
         var artworks = keys.length;
 
         // Get the details of the next person
@@ -31,18 +97,41 @@ function getArtworkOneRequest(){
         console.log(artworks)
         var i = 0;
         while (i < artworks){
-          var artwork = galleryData[keys[i]];
-          // console.log(artwork)
-          var artworkName = artwork["artworkName"];
-          var artworkDescription = artwork["artworkDescription"];
-          var artworkCompletionDate = artwork["artworkCompletionDate"];
-          var artworkPrice = artwork["artworkPrice"];
-          var materialsUsed = artwork["materialsUsed"];
-          var artworkPictureURL = artwork["artworkPictureURL"];
-          var artworkSold = artwork["sold"]
+          try{
+            var artwork = galleryData[keys[i]];
+            var artworkCompletionDate = artwork["artworkCompletionDate"].split(9,16);
+            // galleryData.sort(custom_sort);
+            artworkCompletionDate = artwork["artworkCompletionDate"]
+            galleryData.sort
+            var artworkPictureURL = artwork["artworkPictureURL"];
+              console.log(`i = ${i} Artwork - ${artworkPictureURL}`)
+              document.getElementById("gallery_container").insertAdjacentHTML('beforeend', `
+              <div class="gallery_artwork_wrapper">
+                <a href="/artwork/?id=${keys[i]}">
+                  <img id="${i}" class="gallery_artwork_image" src="${artworkPictureURL}">
+                </a>
+            </div>`);
+            var img = document.getElementById(i);
+            var width = img.naturalWidth;
+            var height = img.naturalHeight;
+            
+            if (width > height) {
+              img.setAttribute('id', 'landscape');
+              img.setAttribute('class', 'gallery_artwork_image');
+            } else {
+              img.setAttribute('id', 'portrait')
+              img.setAttribute('class', 'gallery_artwork_image');
+            }
+            i++
+          } catch (error) {
+            i++
+            console.log(error)
+          }
 
-          i++
         }
+    }else {
+      console.log("No data available");
+      document.getElementById("gallery_container").insertAdjacentHTML('beforeend', `<h1 class="error">Internal server error. <a href="mailto:austin@artpalmer.com">Please contact developer.</a></h1> `);
     }
   })
 }
@@ -103,4 +192,4 @@ function getArtworkOneRequest(){
 //     }
 //   }).catch((error) => {console.error(error);});
 // }
-getArtworkOneRequest()
+getArtworkOneRequest();

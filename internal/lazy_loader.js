@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
       lazyloadThrottleTimeout = setTimeout(function() {
           var scrollTop = window.pageYOffset;
           lazyloadImages.forEach(function(img) {
-              if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              if(img.offsetTop < (window.innerHeight + scrollTop + 300)) {
                 img.src = img.dataset.src;
                 img.classList.remove('lazy');
               }

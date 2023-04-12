@@ -23,11 +23,26 @@ function isSoldTrue(artworkSold){
   if (artworkSold == true){
     return " • Sold";
   }else if (artworkSold == false){
-    return "";
+    return " • For Sale";
   }else{
     return " • Internal server error. Please contact the developer.";
   }
 
+}
+function checkArtworkSize(artworkSize){
+  if (artworkSize){
+    return ` • ${artworkSize}`;
+  }else{
+    return "";
+  }
+}
+function checkDigital(digital){
+  console.log(digital);
+  if (digital == true){
+    return ` • Digital`;
+  }else{
+    return "";
+  }
 }
 get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
   if (snapshot.exists()) {
@@ -44,15 +59,20 @@ get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
     artworkCompletionDate = artworkCompletionDate.replace(/-/g, '.');
     var artworkDescription = data.artworkDescription.longDescription;
     var artowrkMaterials = data.materialsUsed;
+    var artworkSize = data.artworkSize;
     var artworkImageURL = data.artworkPictureURL;
     var artworkSold = data.sold;
+    var digital = data.digital;
 
     document.getElementById("single_artwork_container").innerHTML = `
     <img class="single_artwork_image" id="artworkImage" src="${artworkImageURL}">
     <h1 class="single_artwork_name">${artworkName}</h1>
-    <p class="single_artwork_price_date">${artworkPrice} • ${artworkCompletionDate}${isSoldTrue(artworkSold)}</p>
+    <div>
+    <p class="single_artwork_price_date">${artworkPrice} • ${artworkCompletionDate}${checkArtworkSize(artworkSize)}${isSoldTrue(artworkSold)}${checkDigital(digital)}</p>
     <p class="single_artwork_materials">${artowrkMaterials}</p>
-    <p class="single_artwork_description">${artworkDescription}</p>`;
+    <p class="single_artwork_description">${artworkDescription}</p>
+    </div>`;
+
   var img = document.getElementById("artworkImage");
   var width = img.naturalWidth;
   var height = img.naturalHeight;
