@@ -272,12 +272,17 @@
 
 	/* Single Artwork Display */
 	.single_artwork_container{
+		display: flex;
+		justify-items: center;
 		margin-left: 5%;
 		margin-right: 5%;
   }
+  .single_artwork_decription_container{
+	margin-top: 15%;
+  }
   #portrait.single_artwork_image {
-	/* center flex */
-	margin-left: 21%;
+	/* centerimage with flex */
+
 	width:  800px;
 	height: auto;
   }

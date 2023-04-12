@@ -6,7 +6,6 @@ import { Fireworks } from 'https://esm.run/fireworks-js';
 
 
 
-
 const firebaseConfig = {
     "apiKey": "AIzaSyBimAbyR-R07hZW1z8cI3q3k35lm9uplqE",
     "authDomain": "artpalmer-c1db0.firebaseapp.com",
@@ -23,18 +22,21 @@ var file= [];
 
 export function uploadToCloud(artworkID){
     // artworkUpload location in firebase storage.
-    const artworkStorageRef = ref(storage, ('/artworks/' + artworkID + '.jpg'));
+// Update the file name in artworkStorageRef to have .jpeg extension
+const artworkStorageRef = ref(storage, ('/artworks/' + artworkID + '.jpeg'));
 
-    console.log('/artworks/' + artworkID + '.jpg')
-    
-    var fileElement = document.getElementById("artworkImageFile");
-    file = fileElement.files[0];
-    console.log(file)
-    uploadBytes(artworkStorageRef, file).then((snapshot) => {
-        document.getElementById("alert-success").innerHTML = `Artwork uploaded successfully! - <a href='https://artpalmer.com/artwork/?id=${artworkID}'>Click here to view</a>`;
-        document.getElementById("alert-success").style.display = "block";
-        setTimeout(function(){ document.getElementById("alert-success").style.display = "none"; }, 3000);
+var fileElement = document.getElementById("artworkImageFile");
+file = fileElement.files[0];
 
-    });
+// Create a new File object with .jpeg extension
+const convertedFile = new File([file], artworkID + '.jpeg', {type: 'image/jpeg'});
+
+// Upload the converted file to Firebase Storage
+uploadBytes(artworkStorageRef, convertedFile).then((snapshot) => {
+    document.getElementById("alert-success").innerHTML = `Artwork uploaded successfully! - <a href='https://artpalmer.com/artwork/?id=${artworkID}'>Click here to view</a>`;
+    document.getElementById("alert-success").style.display = "block";
+    setTimeout(function(){ document.getElementById("alert-success").style.display = "none"; }, 3000);
+});
+
 }
 
