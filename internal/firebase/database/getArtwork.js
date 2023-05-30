@@ -30,16 +30,23 @@ function isSoldTrue(artworkSold){
 
 }
 function checkArtworkSize(artworkSize){
-  if (artworkSize){
-    return ` • ${artworkSize}`;
-  }else{
+  if (!artworkSize || artworkSize == ""){
     return "";
+  }else{
+    return ` • ${artworkSize}`;
   }
 }
 function checkDigital(digital){
   console.log(digital);
   if (digital == true){
-    return ` • Digital`;
+    return;
+  }else{
+    return "";
+  }
+}
+function checkArtworkCompletionDate(artworkCompletionDate){
+  if (artworkCompletionDate){
+    return  ` • ${artworkCompletionDate}`;
   }else{
     return "";
   }
@@ -69,7 +76,7 @@ get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
 
     <div class="single_artwork_decription_container">
     <h1 class="single_artwork_name">${artworkName}</h1>
-    <p class="single_artwork_price_date">${artworkPrice} • ${artworkCompletionDate}${checkArtworkSize(artworkSize)}${isSoldTrue(artworkSold)}${checkDigital(digital)}</p>
+    <p class="single_artwork_price_date">${artworkPrice}${checkArtworkCompletionDate(artworkCompletionDate)}${checkArtworkSize(artworkSize)}${isSoldTrue(artworkSold)}${checkDigital(digital)}</p>
     <p class="single_artwork_materials">${artowrkMaterials}</p>
     <p class="single_artwork_description">${artworkDescription}</p>
     </div>`;
