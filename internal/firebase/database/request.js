@@ -16,8 +16,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const dbRef = ref(getDatabase());
 var totalArtworksDB = null
-
-// When submit button is clicked.
 submitArtwork.addEventListener('click', e => {
   get(child(dbRef, 'gallery/map/totalArtworks')).then((snapshot) => {
     

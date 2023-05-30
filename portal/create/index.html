@@ -4,6 +4,7 @@
 <head>
     <title>Portal - Get Artworks</title>
     <script type="module" src="/internal/firebase/database/request.js"></script>
+    <script src="/internal/firebase/storage/convertToJPEG.js"></script>`
     <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
     <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -72,7 +73,7 @@
                     <input id="artworkPrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                   </div>
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="artworkImageFile">
+                    <input type="file" onInput={onSelectFile} class="form-control" id="fileinput">
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" id="sold" name="flexRadioDefault" id="flexRadioDefault1">
