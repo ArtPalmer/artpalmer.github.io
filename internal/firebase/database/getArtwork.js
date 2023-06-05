@@ -39,7 +39,7 @@ function checkArtworkSize(artworkSize){
 function checkDigital(digital){
   console.log(digital);
   if (digital == true){
-    return;
+    return " • Digital";
   }else{
     return "";
   }
