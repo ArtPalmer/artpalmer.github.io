@@ -72,7 +72,7 @@ get(child(dbRef, 'gallery/' + queryValue)).then((snapshot) => {
     var digital = data.digital;
 
     document.getElementById("single_artwork_container").innerHTML = `
-    <img class="single_artwork_image" id="artworkImage" src="${artworkImageURL}">
+    <img class="single_artwork_image" alt="${artworkPrice} • ${artworkDescription}" id="artworkImage" src="${artworkImageURL}">
 
     <div class="single_artwork_decription_container">
     <h1 class="single_artwork_name">${artworkName}</h1>

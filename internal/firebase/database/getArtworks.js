@@ -104,11 +104,19 @@ function getArtworkOneRequest(){
             artworkCompletionDate = artwork["artworkCompletionDate"]
             galleryData.sort
             var artworkPictureURL = artwork["artworkPictureURL"];
+            var artworkPrice = artwork["artworkPrice"];
+            if (artworkPrice % 1 != 0) {
+              artworkPrice = `£${artworkPrice}`
+            }else if (artworkPrice % 1 == 0) {
+              artworkPrice = `£${artworkPrice}.00`
+            }
+            var artworkDescription = artwork.artworkDescription.longDescription;
+
               console.log(`i = ${i} Artwork - ${artworkPictureURL}`)
               document.getElementById("gallery_container").insertAdjacentHTML('beforeend', `
               <div class="gallery_artwork_wrapper">
                 <a href="/artwork/?id=${keys[i]}">
-                  <img id="${i}" class="gallery_artwork_image" src="${artworkPictureURL}">
+                  <img id="${i}" alt="${artworkPrice} • ${artworkDescription}" class="gallery_artwork_image" src="${artworkPictureURL}">
                 </a>
             </div>`);
             var img = document.getElementById(i);
