@@ -23,39 +23,27 @@
                   <input id="side-menu" class="side-menu" type="checkbox" id="side-menu"/>
                   <label id="hamb" class="hamb " for="side-menu"><span class="hamb-line _6margintop"></span></label>
             </nav>
-
-
-      </header>
-      <mobile-nav id="mobile-nav" class="mobile-nav">
-         <a class="mobile-nav-active" href="/">HOME</a>
-         <a href="/enquiry">ENQUIRY</a>
-         <a href="/aboutus/" >ABOUT US</a>
-       </mobile-nav>
+         </header>
+         <mobile-nav id="mobile-nav" class="mobile-nav">
+            <a class="mobile-nav-active" href="/">HOME</a>
+            <a href="/enquiry">ENQUIRY</a>
+            <a href="/aboutus/" >ABOUT US</a>
+         </mobile-nav>
       </headers>
 
-<p class="gallery_instructions">Welcome to my gallery! Feel free to browse through my many artworks here. If you would like an <strong>artwork of your own, commisioned or a pre-existing</strong>, go to our <strong>enquiry page</strong> and fill in your details. <p>
-   <p class="gallery_instructions"><strong>To find out more about an artwork, select the image.</strong></p></p>
-<div id="gallery_container">
-   <!-- <div class="gallery_artwork_wrapper">
-      <a href="/artwork/?id="><img id="portrait" class="gallery_artwork_image" src="internal/assets/images/austinharrison.jpg"></a>
-      <div class="gallery_artwork_description">
-         <a class="artwork_title" href="/artwork/?id=">Artwork Name</a>
-      </div> -->
-   </div>
-
-   <!-- <img class="lazy" data-src="https://ik.imagekit.io/demo/img/image10.jpeg?tr=w-400,h-300" /> -->
-</div>
-<!-- <meta http-equiv="refresh" content="0; url=/under_construction" /> <!-->
-   <script>
-      // if input is checked, hide the hamburger menu
-      document.getElementById("side-menu").addEventListener("change", function() {
-         if (this.checked) {
-            document.getElementById("mobile-nav").style.display = "flex";
-         } else {
-            document.getElementById("mobile-nav").style.display = "none";
-         }
-      });
-   </script>
+      <p class="gallery_instructions">Welcome to my gallery! Feel free to browse through my many artworks here. If you would like an <strong>artwork of your own, commisioned or a pre-existing</strong>, go to our <strong>enquiry page</strong> and fill in your details. <p>
+      <p class="gallery_instructions"><strong>To find out more about an artwork, select the image.</strong></p></p>
+      <div id="gallery_container"></div>
+      <script>
+         // if input is checked, hide the hamburger menu
+         document.getElementById("side-menu").addEventListener("change", function() {
+            if (this.checked) {
+               document.getElementById("mobile-nav").style.display = "flex";
+            } else {
+               document.getElementById("mobile-nav").style.display = "none";
+            }
+         });
+      </script>
    </body>
 
 </html>
