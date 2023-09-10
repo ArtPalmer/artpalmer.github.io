@@ -282,9 +282,9 @@
   }
   #portrait.single_artwork_image {
 	/* centerimage with flex */
-
-	width:  800px;
-	height: auto;
+	width: 473px;
+    height: auto;
+    margin-left: 5%;
   }
   #landscape.single_artwork_image {
 	margin-left: 17%;

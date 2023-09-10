@@ -32,7 +32,7 @@ if (queryValue){
                                 enquiryPhone = enquiryData["phone"],
                                 enquiryBody = enquiryData["body"];
                                 // Display the data.
-                                var emailCode = '<p onClick="window.location.href = \'mailto:art?body=----------Don\'t%20delete%2C%20this%20will%20help%20us%20identify%20your%20enquiry%20later-----------%0A' + queryValue + '\'\">' + enquiryEmail + '</p>'
+                                var emailCode = `<a style="display:block; color:#F3E8EE" href='mailto:art@artpalmer.com?body=` + ` ----------Don't delete%2C%20this%20will%20help%20us%20identify%20your%20enquiry%20later-----------%0A ${queryValue}><p>${enquiryEmail}</p></a>`
                                 var internalDataDisplayCode = '<p>Enquiry ID: ' + queryValue + '</p><p>Name: ' + enquiryName + '</p>' + emailCode + '<p onclick="window.open(\'tel:'+ enquiryPhone + '\');">Phone: ' + enquiryPhone + '</p><p>Body: ' + enquiryBody + '</p>';
                                 document.getElementById("internal_data_display").insertAdjacentHTML('afterbegin', internalDataDisplayCode);
                         }
