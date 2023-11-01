@@ -3,10 +3,11 @@
 <html>
 <head>
     <title>Portal - Get Artworks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="module" src="/internal/firebase/database/request.js"></script>
     <script src="/internal/firebase/storage/convertToJPEG.js"></script>`
-    <link href="/internal/css/desktop_style.css" rel="stylesheet"/>
-    <link href="/internal/css/mobile_style.css" rel="stylesheet"/>
+    <!-- <link href="/internal/css/desktop_style.css" rel="stylesheet"/> -->
+    <!-- <link href="/internal/css/mobile_style.css" rel="stylesheet"/> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!-- flavicon  as jpg-->
@@ -14,7 +15,6 @@
 
 <style>
         body {
-            overflow-x: hidden;
             background-color: #2E2C2F;
         }
         label{
@@ -25,74 +25,69 @@
         }
     </style>
    </head>
-   <body class="">
-      <header class="site-header">
-            <img src="/internal/assets/images/logo.svg" alt="ArtPalmer"/>
-            <nav class="nav">
-               <a class="error" href="/">home</a>
-               <a class="error" href="/enquiry">enquiry</a>
-               <a class="error" href="/aboutus">about us</a>
-            </nav>
-        </header>
-            <div class="align">
-            <div class="container">
-                <div class="alert alert-success" style="display: none;"  id="alert-success" role="alert">
-                  </div>
-                  <div style="display: none;" class="alert alert-danger" id="alert-danger" role="alert">
-                    Successfully deleted all artworks!
-                  </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Name</span>
-                    <input type="text" class="form-control" id="artworkName" aria-describedby="basic-addon3">
-                  </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Short Artwork Description</span>
-                    <input type="text" class="form-control" id="artworkShortDescription" aria-describedby="basic-addon3">
-                  </div>
- 
-                  <div class="input-group">
-                    <span class="input-group-text">Artwork Long Description</span>
-                    <input type="text" class="form-control" id="artworkLongDescription" aria-describedby="basic-addon3">
-                  </div>
-                  <div class="input-group">
-                    <span class="input-group-text">Artwork Completion Date</span>
-                    <input type="text" id="artworkCompletionDate" placeholder="">
-                  </div>
-                  <div class="input-group mb-3">
-
-                    <span class="input-group-text" id="basic-addon3">Materials Used</span>
-                    <input type="text" class="form-control" id="materialsUsed" aria-describedby="basic-addon3">
-                  </div>
-                  <div class="input-group mb-3">
-
-                    <span class="input-group-text" id="basic-addon3">Size Of Artwork</span>
-                    <input type="text" class="form-control" id="artworkSize" aria-describedby="basic-addon3">
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text">£</span>
-                    <input id="artworkPrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                  </div>
-                <div class="input-group mb-3">
-                    <input type="file" onInput={onSelectFile} class="form-control" id="artworkImageFile">
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="sold" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Sold?
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="digital" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Digital?
-                    </label>
-                  </div>
-                </div>
-                <button type="button" id="submitArtwork" class="btn btn-outline-primary">Submit</button>
+   <body>
+              <div class="container">
+                <form>
+                    <div class="alert alert-success" style="display: none;" id="alert-success" role="alert"></div>
+                    <div class="alert alert-danger" style="display: none;" id="alert-danger" role="alert">Successfully deleted all artworks!</div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="artworkName">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkShortDescription" class="form-label">Short Artwork Description</label>
+                        <input type="text" class="form-control" id="artworkShortDescription">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkLongDescription" class="form-label">Artwork Long Description</label>
+                        <input type="text" class="form-control" id="artworkLongDescription">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkCompletionDate" class="form-label">Artwork Completion Date</label>
+                        <input type="text" id="artworkCompletionDate" class="form-control" placeholder="">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="materialsUsed" class="form-label">Materials Used</label>
+                        <input type="text" class="form-control" id="materialsUsed">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkSize" class="form-label">Size Of Artwork</label>
+                        <input type="text" class="form-control" id="artworkSize">
+                    </div>
+                    
+                    <div class="mb-3 input-group">
+                        <span class="input-group-text">£</span>
+                        <input id="artworkPrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="artworkImageFile" class="form-label">Upload Artwork Image</label>
+                        <input type="file" class="form-control" id="artworkImageFile" onchange="onSelectFile(event)">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" type="checkbox" id="sold" name="sold">
+                        <label class="form-check-label" for="sold">Sold?</label>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" type="checkbox" id="digital" name="digital">
+                        <label class="form-check-label" for="digital">Digital?</label>
+                    </div>
+                    
+                    <button type="button" id="submitArtwork" class="btn btn-outline-primary">Submit</button>
+                </form>
+                
                 <!-- <button type="button" id="deleteArtwork" class="btn btn-outline-danger">Delete All Artworks!</button> -->
-                <img style="width: 90%; height: auto;" src="/internal/assets/images/ArtpalmerGalleryDatabaseStructure.png" alt="ArtpalmerGalleryDatabaseStructure"/>
-            </div>
-            <img style="visibility: hidden; margin-left: 50%;margin-right: 50%;" class="loader" src="/internal/assets/images/easel.svg">
+                
+                <img style="width: 90%; height: auto;" src="/internal/assets/images/ArtpalmerGalleryDatabaseStructure.png" alt="ArtpalmerGalleryDatabaseStructure">
+            </div>            
             <script type="module" src="/internal/firebase/auth/firebaseAuth.js"></script>
         </div>
     </div>
