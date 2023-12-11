@@ -89,7 +89,7 @@ function getArtworkOneRequest(){
 
 
 
-        var keys = Object.keys(galleryData).reverse();
+        var keys = Object.keys(galleryData);
         var artworks = keys.length;
 
         // Get the details of the next person
@@ -112,13 +112,16 @@ function getArtworkOneRequest(){
             }
             var artworkDescription = artwork.artworkDescription.longDescription;
 
-              console.log(`i = ${i} Artwork - ${artworkPictureURL}`)
+
+              console.log(`i = ${i} Artwork - ${artworkPictureURL}`);
               document.getElementById("gallery_container").insertAdjacentHTML('beforeend', `
               <div class="gallery_artwork_wrapper">
                 <a href="/artwork/?id=${keys[i]}">
                   <img id="${i}" alt="${artworkPrice} • ${artworkDescription}" class="gallery_artwork_image" src="${artworkPictureURL}">
                 </a>
             </div>`);
+
+
             var img = document.getElementById(i);
             var width = img.naturalWidth;
             var height = img.naturalHeight;
